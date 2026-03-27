@@ -1,0 +1,13 @@
+controllers:
+    resource:
+        path: ../src/Controller/Front/
+        namespace: App\Controller\Front
+    type: attribute
+
+homepage:
+    path: /
+    controller: App\Controller\Front\HomeController::index
+
+quote_create:
+    path: /devis/create
+    controller: App\Controller\Front\QuoteController::create

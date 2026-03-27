@@ -1,0 +1,403 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Devis Assurance Transport - Gratuit et Sans Engagement{% endblock %}
+
+{% block body %}
+<div class="relative min-h-screen bg-gradient-to-br from-green-100 via-white to-emerald-100 py-12 px-4">
+    {# BACKGROUND BLOBS #}
+    <div class="absolute -top-32 -left-32 w-96 h-96 bg-green-300 opacity-20 rounded-full blur-3xl"></div>
+    <div class="absolute -bottom-32 -right-32 w-96 h-96 bg-emerald-400 opacity-20 rounded-full blur-3xl"></div>
+
+    <div class="relative max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
+
+        {# LEFT SIDE #}
+        <div class="w-full space-y-6">
+
+            {# HERO IMAGE + BADGES #}
+            <div class="relative overflow-hidden rounded-3xl shadow-xl bg-white/80 backdrop-blur-xl border border-white/50 hover:shadow-2xl transition duration-500">
+                <img 
+                    src="https://lassurance-des-transporteurs.fr/image/voiture.jpg"
+                    alt="Transport marchandises"
+                    class="w-full h-[320px] md:h-[380px] object-cover transform hover:scale-105 transition duration-700"
+                >
+
+                <div class="absolute top-4 left-4 flex flex-wrap gap-3">
+                    <span class="inline-flex items-center px-4 py-2 rounded-full bg-white/95 shadow text-sm font-semibold text-green-700">
+                        🚀 +500 clients accompagnés
+                    </span>
+                    <span class="inline-flex items-center px-4 py-2 rounded-full bg-green-700 text-white shadow text-sm font-semibold animate-pulse">
+                        Devis gratuit
+                    </span>
+                </div>
+
+                <div class="absolute bottom-4 left-4 right-4">
+                    <div class="bg-white/90 backdrop-blur-md rounded-2xl p-4 shadow-lg border border-white/70">
+                        <div class="flex items-center justify-between flex-wrap gap-3">
+                            <div>
+                                <p class="text-sm text-gray-500">Courtier spécialisé transport</p>
+                                <h1 class="text-xl md:text-2xl font-extrabold text-green-700 tracking-tight mb-1">
+                                    Assurance Transport de Marchandises
+                                </h1>
+                            </div>
+
+                            <div class="flex items-center gap-1 text-yellow-400 text-lg">
+                                <span>★</span>
+                                <span>★</span>
+                                <span>★</span>
+                                <span>★</span>
+                                <span>★</span>
+                                <span class="text-sm text-gray-600 ml-2 font-medium">(4.9/5)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {# TRUST BAR #}
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="bg-white/80 backdrop-blur-xl rounded-3xl shadow-xl border border-white/50 p-5 hover:shadow-2xl hover:scale-[1.01] transition duration-500">
+                    <div class="text-2xl mb-2">⭐</div>
+                    <h3 class="font-semibold text-gray-900 mb-1">Service fiable</h3>
+                    <p class="text-sm text-gray-600">Une solution claire et adaptée aux professionnels du transport.</p>
+                </div>
+
+                <div class="bg-white/80 backdrop-blur-xl rounded-3xl shadow-xl border border-white/50 p-5 hover:shadow-2xl hover:scale-[1.01] transition duration-500">
+                    <div class="text-2xl mb-2">🚀</div>
+                    <h3 class="font-semibold text-gray-900 mb-1">Réponse rapide</h3>
+                    <p class="text-sm text-gray-600">Obtenez un devis personnalisé en quelques clics seulement.</p>
+                </div>
+
+                <div class="bg-white/80 backdrop-blur-xl rounded-3xl shadow-xl border border-white/50 p-5 hover:shadow-2xl hover:scale-[1.01] transition duration-500">
+                    <div class="text-2xl mb-2">🔒</div>
+                    <h3 class="font-semibold text-gray-900 mb-1">Données sécurisées</h3>
+                    <p class="text-sm text-gray-600">Traitement confidentiel des informations dans le respect du RGPD.</p>
+                </div>
+            </div>
+
+            {# INTRO SECTION #}
+            <section class="bg-white/80 backdrop-blur-xl rounded-3xl shadow-xl border border-white/50 p-6 hover:shadow-2xl hover:scale-[1.01] transition duration-500">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center text-green-700 font-bold">1</div>
+                    <h2 class="text-xl font-bold text-gray-900">Présentation générale</h2>
+                </div>
+
+                <p class="text-gray-700 leading-7 mb-4">
+                    L’activité de transport de marchandises, également appelée transport terrestre ou transport par conduites,
+                    est codifiée par l’INSEE sous le code 49. Le transport routier de marchandises à titre onéreux
+                    correspond au code NAF 4941.
+                </p>
+
+                <div class="grid sm:grid-cols-2 gap-4">
+                    <div class="rounded-2xl bg-green-50 border border-green-100 p-4">
+                        <h3 class="font-semibold text-green-800 mb-1">4941A</h3>
+                        <p class="text-sm text-gray-700">Transports routiers de fret interurbains</p>
+                    </div>
+                    <div class="rounded-2xl bg-green-50 border border-green-100 p-4">
+                        <h3 class="font-semibold text-green-800 mb-1">4941B</h3>
+                        <p class="text-sm text-gray-700">Transports routiers de fret de proximité</p>
+                    </div>
+                </div>
+            </section>
+
+            {# TYPES SECTION #}
+            <section class="bg-white/80 backdrop-blur-xl rounded-3xl shadow-xl border border-white/50 p-6 hover:shadow-2xl hover:scale-[1.01] transition duration-500">
+                <div class="flex items-center gap-3 mb-5">
+                    <div class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center text-green-700 font-bold">2</div>
+                    <h2 class="text-xl font-bold text-gray-900">Types de transport concernés</h2>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-4">
+                    <div class="rounded-2xl border border-gray-200 p-5 bg-gray-50">
+                        <h3 class="font-semibold text-gray-900 mb-2">🚛 Poids lourds</h3>
+                        <p class="text-sm text-gray-700 leading-6">
+                            Transport de marchandises avec un véhicule de plus de 3,5 tonnes de PTAC,
+                            comme un camion ou un tracteur routier avec ou sans semi-remorque.
+                        </p>
+                    </div>
+
+                    <div class="rounded-2xl border border-gray-200 p-5 bg-gray-50">
+                        <h3 class="font-semibold text-gray-900 mb-2">🚐 Véhicules légers</h3>
+                        <p class="text-sm text-gray-700 leading-6">
+                            Transport de marchandises avec un véhicule de moins de 3,5 tonnes de PTAC,
+                            comme un utilitaire, une camionnette ou un fourgon.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            {# OBLIGATIONS SECTION #}
+            <section class="bg-white/80 backdrop-blur-xl rounded-3xl shadow-xl border border-white/50 p-6 hover:shadow-2xl hover:scale-[1.01] transition duration-500">
+                <div class="flex items-center gap-3 mb-5">
+                    <div class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center text-green-700 font-bold">3</div>
+                    <h2 class="text-xl font-bold text-gray-900">Obligations d’assurance</h2>
+                </div>
+
+                <div class="space-y-5">
+                    <div class="rounded-2xl border border-green-100 bg-green-50 p-5">
+                        <h3 class="font-semibold text-green-800 mb-2">1. Assurance des véhicules</h3>
+                        <p class="text-sm text-gray-700 leading-6 mb-3">
+                            Tous les véhicules utilisés pour le transport public de marchandises doivent être assurés
+                            pour usage professionnel avec la mention obligatoire :
+                            <span class="font-semibold text-green-800">Transport Public de Marchandises (TPM)</span>.
+                        </p>
+
+                        <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 text-sm">
+                            <div class="bg-white rounded-xl px-3 py-2 border">Camion</div>
+                            <div class="bg-white rounded-xl px-3 py-2 border">Camionnette</div>
+                            <div class="bg-white rounded-xl px-3 py-2 border">Poids lourd</div>
+                            <div class="bg-white rounded-xl px-3 py-2 border">Tracteur routier</div>
+                            <div class="bg-white rounded-xl px-3 py-2 border">Utilitaire</div>
+                            <div class="bg-white rounded-xl px-3 py-2 border">Fourgon</div>
+                            <div class="bg-white rounded-xl px-3 py-2 border col-span-2 sm:col-span-1">Semi-remorque</div>
+                        </div>
+
+                        <div class="mt-4 grid sm:grid-cols-2 gap-3">
+                            <div class="bg-white rounded-2xl border p-4">
+                                <h4 class="font-semibold text-gray-900 mb-1">Contrat mono-véhicule</h4>
+                                <p class="text-sm text-gray-600">Pour un parc jusqu’à 4 véhicules.</p>
+                            </div>
+                            <div class="bg-white rounded-2xl border p-4">
+                                <h4 class="font-semibold text-gray-900 mb-1">Contrat flotte</h4>
+                                <p class="text-sm text-gray-600">Pour un parc supérieur à 4 véhicules.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="rounded-2xl border border-green-100 bg-green-50 p-5">
+                        <h3 class="font-semibold text-green-800 mb-2">2. RC marchandises transportées</h3>
+                        <p class="text-sm text-gray-700 leading-6 mb-4">
+                            Cette assurance couvre les marchandises transportées contre les risques de détérioration
+                            ou de sinistre survenus pendant le transport.
+                        </p>
+
+                        <div class="grid sm:grid-cols-2 gap-3">
+                            <div class="bg-white rounded-xl border p-4">
+                                <h4 class="font-semibold text-gray-900 text-sm mb-1">Police au voyage</h4>
+                                <p class="text-xs text-gray-600">Pour les transports occasionnels.</p>
+                            </div>
+                            <div class="bg-white rounded-xl border p-4">
+                                <h4 class="font-semibold text-gray-900 text-sm mb-1">Police à alimenter</h4>
+                                <p class="text-xs text-gray-600">Pour des livraisons répétées avec déclaration.</p>
+                            </div>
+                            <div class="bg-white rounded-xl border p-4">
+                                <h4 class="font-semibold text-gray-900 text-sm mb-1">Police flottante</h4>
+                                <p class="text-xs text-gray-600">Contrat ouvert sans limite stricte.</p>
+                            </div>
+                            <div class="bg-white rounded-xl border p-4">
+                                <h4 class="font-semibold text-gray-900 text-sm mb-1">Police tiers chargeur</h4>
+                                <p class="text-xs text-gray-600">Souscrite pour le compte des clients.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {# DOCUMENTS SECTION #}
+            <section class="bg-white/80 backdrop-blur-xl rounded-3xl shadow-xl border border-white/50 p-6 hover:shadow-2xl hover:scale-[1.01] transition duration-500">
+                <div class="flex items-center gap-3 mb-5">
+                    <div class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center text-green-700 font-bold">4</div>
+                    <h2 class="text-xl font-bold text-gray-900">Documents pour obtenir un devis</h2>
+                </div>
+
+                <div class="grid sm:grid-cols-2 gap-4">
+                    <div class="rounded-2xl bg-gray-50 border p-4">📄 KBIS</div>
+                    <div class="rounded-2xl bg-gray-50 border p-4">📦 Nature des marchandises transportées</div>
+                    <div class="rounded-2xl bg-gray-50 border p-4">💶 Valeur des marchandises transportées</div>
+                    <div class="rounded-2xl bg-gray-50 border p-4">🚚 Nombre de véhicules concernés</div>
+                </div>
+            </section>
+
+            {# PRODUCTS SECTION #}
+            <section class="bg-white/80 backdrop-blur-xl rounded-3xl shadow-xl border border-white/50 p-6 hover:shadow-2xl hover:scale-[1.01] transition duration-500">
+                <div class="flex items-center gap-3 mb-5">
+                    <div class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center text-green-700 font-bold">5</div>
+                    <h2 class="text-xl font-bold text-gray-900">Nos solutions d’assurance</h2>
+                </div>
+
+                <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                    <div class="rounded-2xl border bg-gray-50 p-4 text-sm font-medium text-gray-700">Assurance poids lourd</div>
+                    <div class="rounded-2xl border bg-gray-50 p-4 text-sm font-medium text-gray-700">Assurance camion</div>
+                    <div class="rounded-2xl border bg-gray-50 p-4 text-sm font-medium text-gray-700">Assurance camionnette</div>
+                    <div class="rounded-2xl border bg-gray-50 p-4 text-sm font-medium text-gray-700">Assurance véhicule utilitaire</div>
+                    <div class="rounded-2xl border bg-gray-50 p-4 text-sm font-medium text-gray-700">Assurance fourgon</div>
+                    <div class="rounded-2xl border bg-gray-50 p-4 text-sm font-medium text-gray-700">Assurance VAN</div>
+                    <div class="rounded-2xl border bg-gray-50 p-4 text-sm font-medium text-gray-700">Transport moins de 3,5 t</div>
+                    <div class="rounded-2xl border bg-gray-50 p-4 text-sm font-medium text-gray-700">Assurance flotte transport</div>
+                </div>
+            </section>
+
+            {# CTA SECTION #}
+            <section class="relative overflow-hidden bg-gradient-to-r from-green-700 to-emerald-600 text-white rounded-3xl shadow-xl p-8 hover:shadow-2xl transition duration-500">
+                <div class="absolute -top-6 -right-6 w-28 h-28 bg-white/10 rounded-full"></div>
+                <div class="absolute -bottom-8 -left-8 w-36 h-36 bg-white/10 rounded-full"></div>
+
+                <div class="relative z-10">
+                    <p class="text-green-100 text-sm mb-2">Demande rapide et sans engagement</p>
+                    <h2 class="text-2xl md:text-3xl font-bold mb-3">
+                        Obtenez votre devis d’assurance transport
+                    </h2>
+                    <p class="text-green-50 max-w-2xl mb-6">
+                        Complétez le formulaire pour recevoir une proposition adaptée à votre activité,
+                        à votre parc de véhicules et à vos besoins professionnels.
+                    </p>
+
+                    <a href="#quote-form"
+                       class="inline-flex items-center justify-center px-6 py-3 rounded-xl bg-white text-green-700 font-semibold shadow hover:scale-105 transform transition">
+                        Demander mon devis
+                    </a>
+                </div>
+            </section>
+
+        </div>
+
+        {# RIGHT FORM #}
+      <div class="lg:sticky lg:top-24 self-start">
+            <div class="mb-6">
+                <div class="inline-flex items-center gap-2 bg-green-100 text-green-800 px-4 py-2 rounded-full text-sm font-semibold mb-3 shadow-sm">
+                    🔒 Formulaire sécurisé
+                </div>
+                <h2 class="text-2xl font-bold text-gray-900">
+                    Complétez ce formulaire pour obtenir un tarif
+                </h2>
+                <p class="text-gray-600 mt-2">
+                    Réponse rapide, sans engagement, avec des garanties adaptées à votre activité.
+                </p>
+            </div>
+
+            <div class="bg-white/80 backdrop-blur-xl rounded-3xl shadow-xl p-6 border border-white/50 hover:shadow-2xl transition duration-500">
+                <form action="{{ path('quote_create') }}" method="POST" id="quote-form">
+                    <div class="space-y-4">
+
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Nom</label>
+                            <input type="text" name="lastname" required
+                                class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-green-500 transition bg-white/90"
+                                placeholder="Nom">
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Prénom</label>
+                            <input type="text" name="firstname" required
+                                class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-green-500 transition bg-white/90"
+                                placeholder="Prénom">
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Raison sociale</label>
+                            <input type="text" name="company"
+                                class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-green-500 transition bg-white/90"
+                                placeholder="Raison sociale">
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Démarrage d’activité ?</label>
+                            <select name="start_activity" required
+                                class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-green-500 transition bg-white/90">
+                                <option value="">Choisir</option>
+                                <option value="1">Oui</option>
+                                <option value="0">Non</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Véhicule assuré actuellement ?</label>
+                            <select name="insured_currently" required
+                                class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-green-500 transition bg-white/90">
+                                <option value="">Choisir</option>
+                                <option value="1">Oui</option>
+                                <option value="0">Non</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Ancienne assurance résiliée ?</label>
+                            <select id="previous_resiliation" name="previous_resiliation" required
+                                class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-green-500 transition bg-white/90">
+                                <option value="">Choisir</option>
+                                <option value="sinistre">Sinistre</option>
+                                <option value="non_paiement">Non paiement</option>
+                                <option value="suspension_permis">Suspension de permis</option>
+                                <option value="fausse_declaration">Fausse déclaration</option>
+                                <option value="echeance">Échéance</option>
+                                <option value="non">Non</option>
+                            </select>
+                        </div>
+
+                        <div id="motif_container">
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Motif résiliation</label>
+                            <textarea name="resiliation_motif"
+                                class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-green-500 transition bg-white/90"
+                                placeholder="Motif"></textarea>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Code postal</label>
+                            <input type="text" name="postcode" required
+                                class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-green-500 transition bg-white/90"
+                                placeholder="Code postal">
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                            <input type="email" name="email" required
+                                class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-green-500 transition bg-white/90"
+                                placeholder="Email">
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Téléphone</label>
+                            <input type="tel" name="phone" required
+                                class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-green-500 transition bg-white/90"
+                                placeholder="Téléphone">
+                        </div>
+
+                        <div class="bg-gray-50/90 border border-gray-200 rounded-2xl p-4">
+                            <div class="flex items-start gap-3">
+                                <div class="text-green-700 text-lg">🔒</div>
+                                <p class="text-xs text-gray-600 leading-5">
+                                    En cliquant sur « Comparer », vous acceptez de transmettre vos informations à AKSAM ASSURANCES,
+                                    qui les utilisera conformément à sa politique de confidentialité pour vous fournir des propositions
+                                    de devis adaptées à votre recherche.
+                                </p>
+                            </div>
+                        </div>
+
+                        <button type="submit"
+                            class="w-full bg-green-700 hover:bg-green-800 text-white font-semibold py-3.5 rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition duration-300">
+                            Comparer maintenant
+                        </button>
+
+                        <div class="grid grid-cols-3 gap-2 text-center text-xs text-gray-500 pt-2">
+                            <div class="bg-green-50 rounded-lg py-2">✅ Gratuit</div>
+                            <div class="bg-green-50 rounded-lg py-2">⚡ Rapide</div>
+                            <div class="bg-green-50 rounded-lg py-2">🔒 Sécurisé</div>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const select = document.getElementById('previous_resiliation');
+    const motifContainer = document.getElementById('motif_container');
+    const textarea = motifContainer.querySelector('textarea');
+
+    function toggle() {
+        if (select.value === 'non' || select.value === '') {
+            motifContainer.classList.add('hidden');
+            textarea.removeAttribute('required');
+        } else {
+            motifContainer.classList.remove('hidden');
+            textarea.setAttribute('required', 'required');
+        }
+    }
+
+    toggle();
+    select.addEventListener('change', toggle);
+});
+</script>
+{% endblock %}
