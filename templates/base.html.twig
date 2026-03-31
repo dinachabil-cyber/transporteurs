@@ -247,6 +247,17 @@
                     animation-duration: 8s;
                 }
             }
+
+            /* Sticky form positioning */
+           .sticky-form {
+    position: sticky;
+    top: 1.5rem;
+}
+
+            /* Ensure parent containers don't break sticky */
+            .lg\\:col-span-4 {
+                align-self: start;
+            }
         </style>
 
         <script>
