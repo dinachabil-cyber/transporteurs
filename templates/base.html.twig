@@ -9,256 +9,11 @@
     {# Fonts #}
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800display=swap" rel="stylesheet">
 
     {# Styles #}
     {% block stylesheets %}
-        {{ encore_entry_link_tags('app') }}
         <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-
-        <style>
-            :root {
-                --color-primary: #065F46;
-                --color-secondary: #047857;
-                --color-accent: #F59E0B;
-                --color-soft: #ECFDF5;
-
-                --bg: #f9fafb;
-                --text: #1f2937;
-                --text-soft: #6b7280;
-                --card: rgba(255, 255, 255, 0.78);
-                --card-solid: #ffffff;
-                --border: rgba(255, 255, 255, 0.45);
-                --header-bg: rgba(255, 255, 255, 0.7);
-                --footer-bg: #064e3b;
-                --footer-text: #a7f3d0;
-                --footer-soft: #9ca3af;
-                --footer-border: #1f2937;
-                --badge-green-bg: #ecfdf5;
-                --badge-green-text: #166534;
-                --badge-green-border: #d1fae5;
-                --badge-amber-bg: #fffbeb;
-                --badge-amber-text: #b45309;
-                --badge-amber-border: #fde68a;
-                --shadow-color: rgba(6, 95, 70, 0.10);
-            }
-
-            [data-theme="dark"] {
-                --bg: #0f172a;
-                --text: #e5e7eb;
-                --text-soft: #94a3b8;
-                --card: rgba(30, 41, 59, 0.82);
-                --card-solid: #1e293b;
-                --border: rgba(148, 163, 184, 0.18);
-                --header-bg: rgba(15, 23, 42, 0.78);
-                --footer-bg: #020617;
-                --footer-text: #cbd5e1;
-                --footer-soft: #94a3b8;
-                --footer-border: #334155;
-                --badge-green-bg: rgba(16, 185, 129, 0.12);
-                --badge-green-text: #86efac;
-                --badge-green-border: rgba(134, 239, 172, 0.18);
-                --badge-amber-bg: rgba(245, 158, 11, 0.10);
-                --badge-amber-text: #fcd34d;
-                --badge-amber-border: rgba(252, 211, 77, 0.18);
-                --shadow-color: rgba(0, 0, 0, 0.35);
-            }
-
-            html {
-                scroll-behavior: smooth;
-            }
-
-            body {
-                font-family: 'Inter', sans-serif;
-                background: var(--bg);
-                color: var(--text);
-                transition: background-color 0.3s ease, color 0.3s ease;
-            }
-
-            .bg-primary {
-                background-color: var(--color-primary);
-            }
-
-            .text-primary {
-                color: var(--color-primary);
-            }
-
-            .border-primary {
-                border-color: var(--color-primary);
-            }
-
-            .glass {
-                background: var(--card);
-                backdrop-filter: blur(16px);
-                -webkit-backdrop-filter: blur(16px);
-                border: 1px solid var(--border);
-                box-shadow: 0 10px 35px var(--shadow-color);
-                transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-            }
-
-            .theme-header {
-                background: var(--header-bg);
-                border-bottom: 1px solid var(--border);
-                transition: background 0.3s ease, border-color 0.3s ease;
-            }
-
-            .theme-card {
-                background: var(--card-solid);
-                color: var(--text);
-                transition: background 0.3s ease, color 0.3s ease;
-            }
-
-            .theme-soft-text {
-                color: var(--text-soft);
-            }
-
-            .theme-footer {
-                background: var(--footer-bg);
-                color: var(--footer-text);
-                transition: background 0.3s ease, color 0.3s ease;
-            }
-
-            .theme-footer-soft {
-                color: var(--footer-soft);
-            }
-
-            .theme-footer-border {
-                border-color: var(--footer-border);
-            }
-
-            .badge-green {
-                background: var(--badge-green-bg);
-                color: var(--badge-green-text);
-                border: 1px solid var(--badge-green-border);
-            }
-
-            .badge-amber {
-                background: var(--badge-amber-bg);
-                color: var(--badge-amber-text);
-                border: 1px solid var(--badge-amber-border);
-            }
-
-            .theme-toggle {
-                background: var(--card-solid);
-                color: var(--text);
-                border: 1px solid var(--border);
-                transition: all 0.3s ease;
-            }
-
-            .theme-toggle:hover {
-                transform: translateY(-1px);
-                box-shadow: 0 8px 20px var(--shadow-color);
-            }
-
-            .hero-glow {
-                position: relative;
-                overflow: hidden;
-            }
-
-            .hero-glow::before {
-                content: "";
-                position: absolute;
-                inset: -30%;
-                background: radial-gradient(circle, rgba(16,185,129,0.18) 0%, rgba(255,255,255,0) 60%);
-                pointer-events: none;
-            }
-
-            .animated-title {
-                background: linear-gradient(90deg, #065F46 0%, #10B981 35%, #F59E0B 55%, #10B981 75%, #065F46 100%);
-                background-size: 220% auto;
-                -webkit-background-clip: text;
-                background-clip: text;
-                color: transparent;
-                animation: shineText 6s linear infinite;
-            }
-
-            .float-soft {
-                animation: floatSoft 4s ease-in-out infinite;
-            }
-
-            .fade-up {
-                animation: fadeUp 0.7s ease-out both;
-            }
-
-            .pulse-soft {
-                animation: pulseSoft 2.5s ease-in-out infinite;
-            }
-
-            .nav-link {
-                position: relative;
-                transition: all 0.3s ease;
-            }
-
-            .nav-link::after {
-                content: "";
-                position: absolute;
-                left: 0;
-                bottom: -4px;
-                width: 0;
-                height: 2px;
-                background: #F59E0B;
-                transition: width 0.3s ease;
-            }
-
-            .nav-link:hover::after {
-                width: 100%;
-            }
-
-            @keyframes shineText {
-                0% {
-                    background-position: 0% center;
-                }
-                100% {
-                    background-position: 220% center;
-                }
-            }
-
-            @keyframes fadeUp {
-                from {
-                    opacity: 0;
-                    transform: translateY(18px);
-                }
-                to {
-                    opacity: 1;
-                    transform: translateY(0);
-                }
-            }
-
-            @keyframes floatSoft {
-                0%, 100% {
-                    transform: translateY(0px);
-                }
-                50% {
-                    transform: translateY(-4px);
-                }
-            }
-
-            @keyframes pulseSoft {
-                0%, 100% {
-                    box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.18);
-                }
-                50% {
-                    box-shadow: 0 0 0 8px rgba(245, 158, 11, 0);
-                }
-            }
-
-            @media (max-width: 768px) {
-                .animated-title {
-                    animation-duration: 8s;
-                }
-            }
-
-            /* Sticky form positioning */
-           .sticky-form {
-    position: sticky;
-    top: 1.5rem;
-}
-
-            /* Ensure parent containers don't break sticky */
-            .lg\\:col-span-4 {
-                align-self: start;
-            }
-        </style>
 
         <script>
             (function () {
@@ -300,7 +55,7 @@
             <div class="pointer-events-none absolute -top-10 left-10 w-40 h-40 bg-green-200 opacity-20 rounded-full blur-3xl"></div>
             <div class="pointer-events-none absolute -top-10 right-10 w-40 h-40 bg-amber-200 opacity-20 rounded-full blur-3xl"></div>
 
-            <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+            <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-0">
                 <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
 
                     <a href="{{ path('homepage') }}" class="flex items-center gap-4 group">
@@ -367,14 +122,14 @@
 
     {# Footer #}
     {% block footer %}
-    <footer class="theme-footer py-10 mt-16">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+   <footer class="theme-footer py-10 w-full">
+    <div class="w-full px-6 md:px-10 lg:px-12">
 
             <div class="grid md:grid-cols-3 gap-8">
 
                 {# Logo #}
                 <div>
-                    <h3 class="text-white font-bold text-lg mb-3">
+                    <h3 class="font-bold text-lg mb-3">
                         Aksam Assurance
                     </h3>
                     <p class="text-sm theme-footer-soft">
@@ -384,7 +139,7 @@
 
                 {# Links #}
                 <div>
-                    <h4 class="text-white font-semibold mb-3">
+                    <h4 class="font-semibold mb-3">
                         Informations
                     </h4>
                     <ul class="space-y-2 text-sm">
@@ -403,7 +158,7 @@
 
                 {# Contact #}
                 <div>
-                    <h4 class="text-white font-semibold mb-3">
+                    <h4 class="font-semibold mb-3">
                         Contact
                     </h4>
                     <ul class="space-y-2 text-sm theme-footer-soft">
@@ -426,7 +181,6 @@
     {# Scripts #}
     {% block javascripts %}
         {% block importmap %}{{ importmap('app') }}{% endblock %}
-        {{ encore_entry_script_tags('app') }}
     {% endblock %}
 </body>
 </html>
