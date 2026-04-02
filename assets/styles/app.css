@@ -141,7 +141,7 @@ body {
 }
 
 .theme-footer {
-    background-color: var(--bg);
+    background-color: var(--bg-gradient-from);
     color: var(--footer-text);
     transition: background-color 0.3s ease, color 0.3s ease;
 }
