@@ -104,7 +104,7 @@
 
     {# Flash Messages #}
     {% block flash_messages %}
-    <div class="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-4">
+    <div class="max-w-7xl mx-auto w-full ">
         {% for type, messages in app.flashes %}
             {% for message in messages %}
                 <div class="mb-4 p-4 rounded-2xl shadow-sm border fade-up {% if type == 'success' %}bg-green-50 text-green-800 border-green-200{% else %}bg-red-50 text-red-800 border-red-200{% endif %}">
