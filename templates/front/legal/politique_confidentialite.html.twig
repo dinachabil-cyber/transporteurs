@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Politique de confidentialité{% endblock %}
+{% block title %}{{ 'privacy_title'|trans }}{% endblock %}
 
 {% block body %}
 <div class="min-h-screen bg-theme-gradient py-12 px-4">
@@ -9,204 +9,161 @@
         {# HERO #}
         <div class="text-center">
             <span class="inline-flex items-center px-4 py-2 rounded-full bg-theme-green-100 text-theme-green-800 text-sm font-semibold mb-4">
-                🔒 Protection des données
+                {{ 'privacy_badge'|trans }}
             </span>
             <h1 class="text-3xl md:text-4xl font-bold text-theme-gray-900 mb-4">
-                Politique de confidentialité
+                {{ 'privacy_title'|trans }}
             </h1>
             <p class="text-theme-gray-600 max-w-2xl mx-auto leading-7">
-                Cette politique explique de manière claire comment AKSAM ASSURANCES
-                collecte, utilise, protège et conserve vos données personnelles.
+                {{ 'privacy_intro'|trans }}
             </p>
         </div>
 
-        {# RESPONSABLE #}
+        {# 1 - RESPONSABLE #}
         <section class="bg-white rounded-2xl shadow-md p-6 border border-theme-gray-100 hover:shadow-lg transition">
             <div class="flex items-center gap-3 mb-4">
                 <div class="w-10 h-10 rounded-full bg-theme-green-100 flex items-center justify-center text-theme-green-700 font-bold">1</div>
-                <h2 class="text-xl font-bold text-theme-gray-900">Responsable du traitement</h2>
+                <h2 class="text-xl font-bold text-theme-gray-900">{{ 'privacy_responsible'|trans }}</h2>
             </div>
-
-            <p class="text-theme-gray-700 leading-7">
-                Le responsable du traitement des données collectées via le site est
-                <span class="font-semibold">AKSAM ASSURANCES SARL</span>,
-                au capital de 10 000 €, immatriculée au RCS de Paris sous le numéro
-                840 653 463, dont le siège social est situé au
-                10 Rue de Penthièvre, 75008 Paris, France.
-            </p>
+            <p class="text-theme-gray-700 leading-7">{{ 'privacy_responsible_desc'|trans }}</p>
         </section>
 
-        {# DONNEES COLLECTEES #}
+        {# 2 - DONNEES #}
         <section class="bg-white rounded-2xl shadow-md p-6 border border-theme-gray-100 hover:shadow-lg transition">
             <div class="flex items-center gap-3 mb-5">
                 <div class="w-10 h-10 rounded-full bg-theme-green-100 flex items-center justify-center text-theme-green-700 font-bold">2</div>
-                <h2 class="text-xl font-bold text-theme-gray-900">Données collectées</h2>
+                <h2 class="text-xl font-bold text-theme-gray-900">{{ 'privacy_data_collected'|trans }}</h2>
             </div>
-
             <div class="grid md:grid-cols-2 gap-4">
                 <div class="rounded-xl border border-gray-200 bg-gray-50 p-5">
-                    <h3 class="font-semibold text-gray-900 mb-2">Données fournies par l’utilisateur</h3>
+                    <h3 class="font-semibold text-gray-900 mb-2">{{ 'privacy_data_user'|trans }}</h3>
                     <ul class="list-disc pl-5 text-sm text-gray-700 space-y-2">
-                        <li>Nom, prénom, coordonnées postales, téléphone, email</li>
-                        <li>Informations sur le véhicule et le profil conducteur</li>
-                        <li>Permis de conduire, carte grise, documents transmis</li>
-                        <li>Données liées aux contrats, paiements et demandes de devis</li>
+                        <li>{{ 'privacy_data_user_name'|trans }}</li>
+                        <li>{{ 'privacy_data_user_vehicle'|trans }}</li>
+                        <li>{{ 'privacy_data_user_license'|trans }}</li>
+                        <li>{{ 'privacy_data_user_contracts'|trans }}</li>
                     </ul>
                 </div>
-
                 <div class="rounded-xl border border-gray-200 bg-gray-50 p-5">
-                    <h3 class="font-semibold text-gray-900 mb-2">Données collectées automatiquement</h3>
+                    <h3 class="font-semibold text-gray-900 mb-2">{{ 'privacy_data_auto'|trans }}</h3>
                     <ul class="list-disc pl-5 text-sm text-gray-700 space-y-2">
-                        <li>Adresse IP</li>
-                        <li>Date et heure de connexion</li>
-                        <li>Navigateur, système d’exploitation, appareil utilisé</li>
-                        <li>Pages visitées, clics, données techniques de navigation</li>
+                        <li>{{ 'privacy_data_auto_ip'|trans }}</li>
+                        <li>{{ 'privacy_data_auto_date'|trans }}</li>
+                        <li>{{ 'privacy_data_auto_browser'|trans }}</li>
+                        <li>{{ 'privacy_data_auto_pages'|trans }}</li>
                     </ul>
                 </div>
             </div>
         </section>
 
-        {# FINALITES #}
+        {# 3 - FINALITES #}
         <section class="bg-white rounded-2xl shadow-md p-6 border border-theme-gray-100 hover:shadow-lg transition">
             <div class="flex items-center gap-3 mb-5">
                 <div class="w-10 h-10 rounded-full bg-theme-green-100 flex items-center justify-center text-theme-green-700 font-bold">3</div>
-                <h2 class="text-xl font-bold text-theme-gray-900">Finalités du traitement</h2>
+                <h2 class="text-xl font-bold text-theme-gray-900">{{ 'privacy_purposes'|trans }}</h2>
             </div>
-
             <div class="grid sm:grid-cols-2 gap-4">
-                <div class="rounded-xl bg-green-50 border border-green-100 p-4 text-sm text-gray-700">
-                    Élaboration et envoi de devis adaptés à votre situation
-                </div>
-                <div class="rounded-xl bg-green-50 border border-green-100 p-4 text-sm text-gray-700">
-                    Gestion, suivi et exécution des contrats d’assurance
-                </div>
-                <div class="rounded-xl bg-green-50 border border-green-100 p-4 text-sm text-gray-700">
-                    Suivi de la relation client et demandes d’information
-                </div>
-                <div class="rounded-xl bg-green-50 border border-green-100 p-4 text-sm text-gray-700">
-                    Amélioration du site, statistiques et qualité des services
-                </div>
-                <div class="rounded-xl bg-green-50 border border-green-100 p-4 text-sm text-gray-700">
-                    Prospection commerciale et enquêtes de satisfaction
-                </div>
-                <div class="rounded-xl bg-green-50 border border-green-100 p-4 text-sm text-gray-700">
-                    Respect des obligations légales et réglementaires
-                </div>
+                <div class="rounded-xl bg-green-50 border border-green-100 p-4 text-sm text-gray-700">{{ 'privacy_purpose_quote'|trans }}</div>
+                <div class="rounded-xl bg-green-50 border border-green-100 p-4 text-sm text-gray-700">{{ 'privacy_purpose_contract'|trans }}</div>
+                <div class="rounded-xl bg-green-50 border border-green-100 p-4 text-sm text-gray-700">{{ 'privacy_purpose_client'|trans }}</div>
+                <div class="rounded-xl bg-green-50 border border-green-100 p-4 text-sm text-gray-700">{{ 'privacy_purpose_improve'|trans }}</div>
+                <div class="rounded-xl bg-green-50 border border-green-100 p-4 text-sm text-gray-700">{{ 'privacy_purpose_marketing'|trans }}</div>
+                <div class="rounded-xl bg-green-50 border border-green-100 p-4 text-sm text-gray-700">{{ 'privacy_purpose_legal'|trans }}</div>
             </div>
         </section>
 
-        {# DESTINATAIRES #}
+        {# 4 - DESTINATAIRES #}
         <section class="bg-white rounded-2xl shadow-md p-6 border border-theme-gray-100 hover:shadow-lg transition">
             <div class="flex items-center gap-3 mb-4">
                 <div class="w-10 h-10 rounded-full bg-theme-green-100 flex items-center justify-center text-theme-green-700 font-bold">4</div>
-                <h2 class="text-xl font-bold text-theme-gray-900">Destinataires des données</h2>
+                <h2 class="text-xl font-bold text-theme-gray-900">{{ 'privacy_recipients'|trans }}</h2>
             </div>
-
-            <p class="text-gray-700 leading-7">
-                Vos données personnelles peuvent être transmises aux partenaires d’AKSAM ASSURANCES,
-                notamment aux compagnies d’assurance et aux intervenants participant à la gestion
-                des contrats ou des sinistres, dans le seul but de vous proposer une tarification
-                et un accompagnement adaptés.
-            </p>
+            <p class="text-gray-700 leading-7">{{ 'privacy_recipients_desc'|trans }}</p>
         </section>
 
-        {# STOCKAGE ET CONSERVATION #}
+        {# 5 - STOCKAGE #}
         <section class="bg-white rounded-2xl shadow-md p-6 border border-theme-gray-100 hover:shadow-lg transition">
             <div class="flex items-center gap-3 mb-5">
                 <div class="w-10 h-10 rounded-full bg-theme-green-100 flex items-center justify-center text-theme-green-700 font-bold">5</div>
-                <h2 class="text-xl font-bold text-theme-gray-900">Stockage et durée de conservation</h2>
+                <h2 class="text-xl font-bold text-theme-gray-900">{{ 'privacy_storage'|trans }}</h2>
             </div>
-
-            <p class="text-theme-gray-700 leading-7 mb-4">
-                Les données personnelles sont conservées pendant la durée nécessaire à la réalisation
-                des finalités poursuivies et selon les délais légaux applicables.
-            </p>
-
+            <p class="text-theme-gray-700 leading-7 mb-4">{{ 'privacy_storage_desc'|trans }}</p>
             <div class="grid md:grid-cols-2 gap-4">
                 <div class="rounded-xl border bg-gray-50 p-4">
-                    <h3 class="font-semibold text-gray-900 mb-1">Données comptables</h3>
-                    <p class="text-sm text-gray-600">Conservation jusqu’à 10 ans.</p>
+                    <h3 class="font-semibold text-gray-900 mb-1">{{ 'privacy_storage_accounting'|trans }}</h3>
+                    <p class="text-sm text-gray-600">{{ 'privacy_storage_accounting_desc'|trans }}</p>
                 </div>
                 <div class="rounded-xl border bg-gray-50 p-4">
-                    <h3 class="font-semibold text-gray-900 mb-1">Contrats et dossiers</h3>
-                    <p class="text-sm text-gray-600">Conservation variable selon la nature du contrat.</p>
+                    <h3 class="font-semibold text-gray-900 mb-1">{{ 'privacy_storage_contracts'|trans }}</h3>
+                    <p class="text-sm text-gray-600">{{ 'privacy_storage_contracts_desc'|trans }}</p>
                 </div>
                 <div class="rounded-xl border bg-gray-50 p-4">
-                    <h3 class="font-semibold text-gray-900 mb-1">Sinistres</h3>
-                    <p class="text-sm text-gray-600">Conservation selon les obligations légales applicables.</p>
+                    <h3 class="font-semibold text-gray-900 mb-1">{{ 'privacy_storage_claims'|trans }}</h3>
+                    <p class="text-sm text-gray-600">{{ 'privacy_storage_claims_desc'|trans }}</p>
                 </div>
                 <div class="rounded-xl border bg-gray-50 p-4">
-                    <h3 class="font-semibold text-gray-900 mb-1">Données de relation client</h3>
-                    <p class="text-sm text-gray-600">Conservées pendant la durée utile au suivi de la relation.</p>
+                    <h3 class="font-semibold text-gray-900 mb-1">{{ 'privacy_storage_client'|trans }}</h3>
+                    <p class="text-sm text-gray-600">{{ 'privacy_storage_client_desc'|trans }}</p>
                 </div>
             </div>
         </section>
 
-        {# SECURITE #}
+        {# 6 - SECURITE #}
         <section class="bg-white rounded-2xl shadow-md p-6 border border-theme-gray-100 hover:shadow-lg transition">
             <div class="flex items-center gap-3 mb-4">
                 <div class="w-10 h-10 rounded-full bg-theme-green-100 flex items-center justify-center text-theme-green-700 font-bold">6</div>
-                <h2 class="text-xl font-bold text-theme-gray-900">Sécurité des données</h2>
+                <h2 class="text-xl font-bold text-theme-gray-900">{{ 'privacy_security'|trans }}</h2>
             </div>
-
-            <p class="text-theme-gray-700 leading-7">
-                AKSAM ASSURANCES met en place des mesures techniques et organisationnelles
-                adaptées pour protéger vos données contre tout accès non autorisé, perte,
-                altération ou divulgation. Les accès sont sécurisés, les connexions sont
-                journalisées et certaines données sont chiffrées.
-            </p>
+            <p class="text-theme-gray-700 leading-7">{{ 'privacy_security_desc'|trans }}</p>
         </section>
 
-        {# COOKIES #}
+        {# 7 - COOKIES #}
         <section class="bg-white rounded-2xl shadow-md p-6 border border-theme-gray-100 hover:shadow-lg transition">
             <div class="flex items-center gap-3 mb-5">
                 <div class="w-10 h-10 rounded-full bg-theme-green-100 flex items-center justify-center text-theme-green-700 font-bold">7</div>
-                <h2 class="text-xl font-bold text-theme-gray-900">Cookies</h2>
+                <h2 class="text-xl font-bold text-theme-gray-900">{{ 'privacy_cookies'|trans }}</h2>
             </div>
-
             <div class="grid md:grid-cols-3 gap-4">
                 <div class="rounded-xl bg-green-50 border border-green-100 p-4">
-                    <h3 class="font-semibold text-green-800 mb-2">Cookies fonctionnels</h3>
-                    <p class="text-sm text-gray-700">
-                        Permettent d’améliorer l’affichage et de mémoriser certaines préférences.
-                    </p>
+                    <h3 class="font-semibold text-green-800 mb-2">{{ 'privacy_cookies_functional'|trans }}</h3>
+                    <p class="text-sm text-gray-700">{{ 'privacy_cookies_functional_desc'|trans }}</p>
                 </div>
-
                 <div class="rounded-xl bg-green-50 border border-green-100 p-4">
-                    <h3 class="font-semibold text-green-800 mb-2">Cookies statistiques</h3>
-                    <p class="text-sm text-gray-700">
-                        Servent à analyser la fréquentation du site et à améliorer les services.
-                    </p>
+                    <h3 class="font-semibold text-green-800 mb-2">{{ 'privacy_cookies_stats'|trans }}</h3>
+                    <p class="text-sm text-gray-700">{{ 'privacy_cookies_stats_desc'|trans }}</p>
                 </div>
-
                 <div class="rounded-xl bg-green-50 border border-green-100 p-4">
-                    <h3 class="font-semibold text-green-800 mb-2">Cookies tiers</h3>
-                    <p class="text-sm text-gray-700">
-                        Peuvent être utilisés par certains services comme les outils d’analyse.
-                    </p>
+                    <h3 class="font-semibold text-green-800 mb-2">{{ 'privacy_cookies_third_party'|trans }}</h3>
+                    <p class="text-sm text-gray-700">{{ 'privacy_cookies_third_party_desc'|trans }}</p>
                 </div>
             </div>
         </section>
 
-        {# DROITS #}
+        {# 8 - DROITS #}
         <section class="bg-white rounded-2xl shadow-md p-6 border border-theme-gray-100 hover:shadow-lg transition">
             <div class="flex items-center gap-3 mb-5">
                 <div class="w-10 h-10 rounded-full bg-theme-green-100 flex items-center justify-center text-theme-green-700 font-bold">8</div>
-                <h2 class="text-xl font-bold text-theme-gray-900">Vos droits</h2>
+                <h2 class="text-xl font-bold text-theme-gray-900">{{ 'privacy_rights'|trans }}</h2>
             </div>
-
             <ul class="list-disc pl-5 text-gray-700 space-y-2 leading-7">
-                <li>Droit d’accès à vos données personnelles</li>
-                <li>Droit de rectification de vos informations</li>
-                <li>Droit d’effacement lorsque cela est applicable</li>
-                <li>Droit d’opposition au traitement</li>
-                <li>Droit de limitation du traitement</li>
-                <li>Droit de demander une copie de vos données</li>
+                <li>{{ 'privacy_rights_access'|trans }}</li>
+                <li>{{ 'privacy_rights_rectification'|trans }}</li>
+                <li>{{ 'privacy_rights_erasure'|trans }}</li>
+                <li>{{ 'privacy_rights_opposition'|trans }}</li>
+                <li>{{ 'privacy_rights_limitation'|trans }}</li>
+                <li>{{ 'privacy_rights_portability'|trans }}</li>
             </ul>
         </section>
 
-        {# CONTACT CTA #}
-      
+        {# CTA #}
+        <div class="bg-theme-green-700 text-white rounded-3xl p-8 shadow-xl text-center">
+            <h2 class="text-2xl font-bold mb-3">{{ 'legal_cta_title'|trans }}</h2>
+            <p class="text-theme-green-100 mb-6">{{ 'legal_cta_desc'|trans }}</p>
+            <a href="{{ path('homepage', {_locale: app.request.locale}) }}"
+               class="inline-block px-6 py-3 bg-white text-theme-green-700 font-semibold rounded-xl shadow hover:scale-105 transition">
+                {{ 'legal_cta_button'|trans }}
+            </a>
+        </div>
 
     </div>
 </div>

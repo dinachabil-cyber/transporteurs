@@ -5,9 +5,34 @@ controllers:
     type: attribute
 
 homepage:
-    path: /
+    path: /{_locale}
     controller: App\Controller\Front\HomeController::index
+    defaults:
+        _locale: fr
+    requirements:
+        _locale: fr|ar|en
+
+front_mentions_legales:
+    path: /{_locale}/mentions-legales
+    controller: App\Controller\Front\LegalController::mentionsLegales
+    defaults:
+        _locale: fr
+    requirements:
+        _locale: fr|ar|en
+
+front_politique_confidentialite:
+    path: /{_locale}/politique-confidentialite
+    controller: App\Controller\Front\LegalController::politiqueConfidentialite
+    defaults:
+        _locale: fr
+    requirements:
+        _locale: fr|ar|en
 
 quote_create:
-    path: /devis/create
+    path: /{_locale}/devis
     controller: App\Controller\Front\QuoteController::create
+    methods: [GET, POST]
+    defaults:
+        _locale: fr
+    requirements:
+        _locale: fr|ar|en

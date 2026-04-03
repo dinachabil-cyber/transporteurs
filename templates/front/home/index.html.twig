@@ -1,85 +1,21 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Devis Assurance Transport - Gratuit et Sans Engagement{% endblock %}
+{% block title %}{{ 'home_title'|trans }}{% endblock %}
 
 {% block body %}
 <style>
-/* Card and CTA Animations */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
+@keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes scaleIn { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
+@keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
+@keyframes shimmer { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
+.animate-fade-in-up { animation: fadeInUp 0.6s ease-out forwards; opacity: 0; }
+.animate-fade-in { animation: fadeIn 0.5s ease-out forwards; opacity: 0; }
+.animate-scale-in { animation: scaleIn 0.5s ease-out forwards; opacity: 0; }
+.animate-pulse-slow { animation: pulse 2s ease-in-out infinite; }
+.animate-shimmer { background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent); background-size: 200% 100%; animation: shimmer 2s infinite; }
 
-@keyframes scaleIn {
-  from {
-    opacity: 0;
-    transform: scale(0.9);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-@keyframes pulse {
-  0%, 100% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.05);
-  }
-}
-
-@keyframes shimmer {
-  0% {
-    background-position: -200% 0;
-  }
-  100% {
-    background-position: 200% 0;
-  }
-}
-
-.animate-fade-in-up {
-  animation: fadeInUp 0.6s ease-out forwards;
-  opacity: 0;
-}
-
-.animate-fade-in {
-  animation: fadeIn 0.5s ease-out forwards;
-  opacity: 0;
-}
-
-.animate-scale-in {
-  animation: scaleIn 0.5s ease-out forwards;
-  opacity: 0;
-}
-
-.animate-pulse-slow {
-  animation: pulse 2s ease-in-out infinite;
-}
-
-.animate-shimmer {
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
-  background-size: 200% 100%;
-  animation: shimmer 2s infinite;
-}
-
-/* Staggered delays for cards */
 .delay-100 { animation-delay: 0.1s; }
 .delay-200 { animation-delay: 0.2s; }
 .delay-300 { animation-delay: 0.3s; }
@@ -89,433 +25,345 @@
 .delay-700 { animation-delay: 0.7s; }
 .delay-800 { animation-delay: 0.8s; }
 
-/* Hover animations */
-.hover-lift {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
+.hover-lift { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+.hover-lift:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0,0,0,0.15); }
+.hover-glow { transition: all 0.3s ease; }
+.hover-glow:hover { box-shadow: 0 0 30px rgba(34,197,94,0.4); }
 
-.hover-lift:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-}
-
-.hover-glow {
-  transition: all 0.3s ease;
-}
-
-.hover-glow:hover {
-  box-shadow: 0 0 30px rgba(34, 197, 94, 0.4);
-}
-
-/* CTA specific animations */
-.cta-animate {
-  position: relative;
-  overflow: hidden;
-}
-
-.cta-animate::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-  animation: shimmer 3s infinite;
-}
-
-.cta-button {
-  transition: all 0.3s ease;
-  animation: pulse 2s ease-in-out infinite;
-}
-
-.cta-button:hover {
-  animation: none;
-  transform: scale(1.1);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-}
+.cta-animate { position: relative; overflow: hidden; }
+.cta-animate::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent); animation: shimmer 3s infinite; }
+.cta-button { transition: all 0.3s ease; animation: pulse 2s ease-in-out infinite; }
+.cta-button:hover { animation: none; transform: scale(1.1); box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
 </style>
 
 <div class="relative min-h-screen bg-theme-gradient py-12 px-4 animate-fade-in">
-    {# BACKGROUND BLOBS #}
     <div class="absolute -top-32 -left-32 w-96 h-96 bg-theme-green-100 opacity-20 rounded-full blur-3xl animate-pulse-slow"></div>
     <div class="absolute -bottom-32 -right-32 w-96 h-96 bg-theme-green-100 opacity-20 rounded-full blur-3xl animate-pulse-slow"></div>
 
     <div class="relative max-w-7xl mx-auto animate-fade-in">
-        {# HERO SECTION - Two columns with equal height #}
+
+        {# HERO - Two columns #}
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch mb-12 animate-fade-in">
-            
-            {# LEFT COLUMN - Image/Card #}
+
+            {# LEFT - Image #}
             <div class="flex flex-col animate-fade-in-up">
-                <div class="relative overflow-hidden rounded-3xl shadow-xl bg-white/80 backdrop-blur-xl border border-theme-gray-200 flex-1 animate-fade-in-up hover-lift hover-glow">
-                    <img 
+                <div class="relative overflow-hidden rounded-3xl shadow-xl bg-white/80 backdrop-blur-xl border border-theme-gray-200 flex-1 hover-lift hover-glow">
+                    <img
                         src="https://lassurance-des-transporteurs.fr/image/voiture.jpg"
-                        alt="Transport marchandises"
-                        class="w-full h-full object-cover animate-fade-in"
-                    >
+                        alt="{{ 'home_insurance_title'|trans }}"
+                        class="w-full h-full object-cover animate-fade-in">
 
                     <div class="absolute top-4 left-4 flex flex-wrap gap-3">
                         <span class="inline-flex items-center px-4 py-2 rounded-full bg-white/95 shadow text-sm font-semibold text-theme-green-700 animate-fade-in hover-lift">
-                            🚀 +500 clients accompagnés
+                            {{ 'home_hero_clients'|trans }}
                         </span>
-                        <span class="inline-flex items-center px-4 py-2 rounded-full bg-theme-green-700 text-white shadow text-sm font-semibold animate-pulse animate-fade-in delay-100 hover-lift">
-                            Devis gratuit
+                        <span class="inline-flex items-center px-4 py-2 rounded-full bg-theme-green-700 text-white shadow text-sm font-semibold animate-fade-in delay-100 hover-lift">
+                            {{ 'home_hero_free_quote'|trans }}
                         </span>
                     </div>
 
                     <div class="absolute bottom-4 left-4 right-4">
-                        <div class="bg-white/90 backdrop-blur-md rounded-2xl p-4 shadow-lg border border-theme-gray-200 animate-fade-in-up hover-lift">
+                        <div class="bg-white/90 backdrop-blur-md rounded-2xl p-4 shadow-lg border border-theme-gray-200 hover-lift">
                             <div class="flex items-center justify-between flex-wrap gap-3">
                                 <div>
-                                    <p class="text-sm text-theme-gray-500 animate-fade-in">Courtier spécialisé transport</p>
-                                    <h1 class="text-xl md:text-2xl font-extrabold text-theme-green-700 tracking-tight mb-1 animate-fade-in-up">
-                                        Assurance Transport de Marchandises
-                                    </h1>
+                                    <p class="text-sm text-theme-gray-500">{{ 'home_broker'|trans }}</p>
+                                    <h2 class="text-xl md:text-2xl font-extrabold text-theme-green-700 tracking-tight mb-1">
+                                        {{ 'home_insurance_title'|trans }}
+                                    </h2>
                                 </div>
-
-                                <div class="flex items-center gap-1 text-yellow-400 text-lg animate-fade-in">
-                                    <span>★</span>
-                                    <span>★</span>
-                                    <span>★</span>
-                                    <span>★</span>
-                                    <span>★</span>
-                                    <span class="text-sm text-theme-gray-600 ml-2 font-medium">(4.9/5)</span>
+                                <div class="flex items-center gap-1 text-yellow-400 text-lg">
+                                    <span>★★★★★</span>
+                                    <span class="text-sm text-theme-gray-600 ml-2 font-medium">{{ 'home_rating'|trans }}</span>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
-                
             </div>
 
-            {# RIGHT COLUMN - Quote Form #}
+            {# RIGHT - Form #}
             <div class="bg-white/80 backdrop-blur-xl rounded-3xl shadow-xl p-6 border border-theme-gray-200 flex flex-col animate-fade-in-up delay-200 hover-lift hover-glow">
                 <div class="mb-4">
-                    <div class="inline-flex items-center gap-2 bg-theme-green-100 text-theme-green-800 px-3 py-1.5 rounded-full text-xs font-semibold mb-2 shadow-sm animate-fade-in hover-lift">
-                        🔒 Formulaire sécurisé
+                    <div class="inline-flex items-center gap-2 bg-theme-green-100 text-theme-green-800 px-3 py-1.5 rounded-full text-xs font-semibold mb-2 shadow-sm">
+                        {{ 'home_form_secure'|trans }}
                     </div>
-                    <h2 class="text-xl font-bold text-gray-900 animate-fade-in-up">
-                        Obtenez votre devis gratuit
-                    </h2>
-                    <p class="text-theme-gray-600 text-sm mt-1 animate-fade-in-up delay-100">
-                        Réponse rapide, sans engagement.
-                    </p>
+                    <h2 class="text-xl font-bold text-gray-900">{{ 'home_form_title'|trans }}</h2>
+                    <p class="text-theme-gray-600 text-sm mt-1">{{ 'home_form_subtitle'|trans }}</p>
                 </div>
 
-                <form action="{{ path('quote_create') }}" method="POST" id="quote-form" class="flex-1 flex flex-col">
-                    <div class="space-y-3 flex-1 animate-fade-in">
+                <form action="{{ path('quote_create', {_locale: app.request.locale}) }}" method="POST" id="quote-form" class="flex-1 flex flex-col">
+                    <div class="space-y-3 flex-1">
                         <div class="grid grid-cols-2 gap-3">
                             <div>
-                                <label class="block text-xs font-medium text-theme-gray-700 mb-1">Nom</label>
+                                <label class="block text-xs font-medium text-theme-gray-700 mb-1">{{ 'form_lastname'|trans }}</label>
                                 <input type="text" name="lastname" required
                                     class="w-full px-3 py-2.5 text-sm border border-gray-300 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-green-500 transition bg-white/90"
-                                    placeholder="Nom">
+                                    placeholder="{{ 'form_placeholder_lastname'|trans }}">
                             </div>
                             <div>
-                                <label class="block text-xs font-medium text-theme-gray-700 mb-1">Prénom</label>
+                                <label class="block text-xs font-medium text-theme-gray-700 mb-1">{{ 'form_firstname'|trans }}</label>
                                 <input type="text" name="firstname" required
                                     class="w-full px-3 py-2.5 text-sm border border-gray-300 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-green-500 transition bg-white/90"
-                                    placeholder="Prénom">
+                                    placeholder="{{ 'form_placeholder_firstname'|trans }}">
                             </div>
                         </div>
 
                         <div>
-                            <label class="block text-xs font-medium text-theme-gray-700 mb-1">Raison sociale</label>
+                            <label class="block text-xs font-medium text-theme-gray-700 mb-1">{{ 'form_company'|trans }}</label>
                             <input type="text" name="company"
                                 class="w-full px-3 py-2.5 text-sm border border-gray-300 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-green-500 transition bg-white/90"
-                                placeholder="Raison sociale">
+                                placeholder="{{ 'form_placeholder_company'|trans }}">
                         </div>
 
                         <div class="grid grid-cols-2 gap-3">
                             <div>
-                                <label class="block text-xs font-medium text-theme-gray-700 mb-1">Démarrage d'activité ?</label>
+                                <label class="block text-xs font-medium text-theme-gray-700 mb-1">{{ 'form_start_activity'|trans }}</label>
                                 <select name="start_activity" required
                                     class="w-full px-3 py-2.5 text-sm border border-gray-300 rounded-xl focus:ring-2 focus:ring-green-500 transition bg-white/90">
-                                    <option value="">Choisir</option>
-                                    <option value="1">Oui</option>
-                                    <option value="0">Non</option>
+                                    <option value="">{{ 'form_select_choose'|trans }}</option>
+                                    <option value="1">{{ 'form_select_yes'|trans }}</option>
+                                    <option value="0">{{ 'form_select_no'|trans }}</option>
                                 </select>
                             </div>
                             <div>
-                                <label class="block text-xs font-medium text-theme-gray-700 mb-1">Véhicule assuré ?</label>
+                                <label class="block text-xs font-medium text-theme-gray-700 mb-1">{{ 'form_insured_currently'|trans }}</label>
                                 <select name="insured_currently" required
                                     class="w-full px-3 py-2.5 text-sm border border-gray-300 rounded-xl focus:ring-2 focus:ring-green-500 transition bg-white/90">
-                                    <option value="">Choisir</option>
-                                    <option value="1">Oui</option>
-                                    <option value="0">Non</option>
+                                    <option value="">{{ 'form_select_choose'|trans }}</option>
+                                    <option value="1">{{ 'form_select_yes'|trans }}</option>
+                                    <option value="0">{{ 'form_select_no'|trans }}</option>
                                 </select>
                             </div>
                         </div>
 
                         <div>
-                            <label class="block text-xs font-medium text-theme-gray-700 mb-1">Ancienne assurance résiliée ?</label>
+                            <label class="block text-xs font-medium text-theme-gray-700 mb-1">{{ 'form_previous_resiliation'|trans }}</label>
                             <select id="previous_resiliation" name="previous_resiliation" required
                                 class="w-full px-3 py-2.5 text-sm border border-gray-300 rounded-xl focus:ring-2 focus:ring-green-500 transition bg-white/90">
-                                <option value="">Choisir</option>
-                                <option value="sinistre">Sinistre</option>
-                                <option value="non_paiement">Non paiement</option>
-                                <option value="suspension_permis">Suspension de permis</option>
-                                <option value="fausse_declaration">Fausse déclaration</option>
-                                <option value="echeance">Échéance</option>
-                                <option value="non">Non</option>
+                                <option value="">{{ 'form_select_choose'|trans }}</option>
+                                <option value="sinistre">{{ 'form_resiliation_sinistre'|trans }}</option>
+                                <option value="non_paiement">{{ 'form_resiliation_non_paiement'|trans }}</option>
+                                <option value="suspension_permis">{{ 'form_resiliation_suspension'|trans }}</option>
+                                <option value="fausse_declaration">{{ 'form_resiliation_fausse_declaration'|trans }}</option>
+                                <option value="echeance">{{ 'form_resiliation_echeance'|trans }}</option>
+                                <option value="non">{{ 'form_resiliation_non'|trans }}</option>
                             </select>
                         </div>
 
                         <div id="motif_container" class="hidden">
-                            <label class="block text-xs font-medium text-theme-gray-700 mb-1">Motif résiliation</label>
+                            <label class="block text-xs font-medium text-theme-gray-700 mb-1">{{ 'form_resiliation_motif'|trans }}</label>
                             <textarea name="resiliation_motif" rows="2"
                                 class="w-full px-3 py-2.5 text-sm border border-gray-300 rounded-xl focus:ring-2 focus:ring-green-500 transition bg-white/90"
-                                placeholder="Motif"></textarea>
+                                placeholder="{{ 'form_placeholder_motif'|trans }}"></textarea>
                         </div>
 
                         <div class="grid grid-cols-2 gap-3">
                             <div>
-                                <label class="block text-xs font-medium text-theme-gray-700 mb-1">Code postal</label>
+                                <label class="block text-xs font-medium text-theme-gray-700 mb-1">{{ 'form_postcode'|trans }}</label>
                                 <input type="text" name="postcode" required
                                     class="w-full px-3 py-2.5 text-sm border border-gray-300 rounded-xl focus:ring-2 focus:ring-green-500 transition bg-white/90"
-                                    placeholder="Code postal">
+                                    placeholder="{{ 'form_placeholder_postcode'|trans }}">
                             </div>
                             <div>
-                                <label class="block text-xs font-medium text-theme-gray-700 mb-1">Téléphone</label>
+                                <label class="block text-xs font-medium text-theme-gray-700 mb-1">{{ 'form_phone'|trans }}</label>
                                 <input type="tel" name="phone" required
                                     class="w-full px-3 py-2.5 text-sm border border-gray-300 rounded-xl focus:ring-2 focus:ring-green-500 transition bg-white/90"
-                                    placeholder="Téléphone">
+                                    placeholder="{{ 'form_placeholder_phone'|trans }}">
                             </div>
                         </div>
 
                         <div>
-                            <label class="block text-xs font-medium text-theme-gray-700 mb-1">Email</label>
+                            <label class="block text-xs font-medium text-theme-gray-700 mb-1">{{ 'form_email'|trans }}</label>
                             <input type="email" name="email" required
                                 class="w-full px-3 py-2.5 text-sm border border-gray-300 rounded-xl focus:ring-2 focus:ring-green-500 transition bg-white/90"
-                                placeholder="Email">
+                                placeholder="{{ 'form_placeholder_email'|trans }}">
                         </div>
                     </div>
 
                     <div class="mt-auto pt-4">
-                        <div class="bg-theme-gray-50/90 border border-theme-gray-200 rounded-xl p-3 mb-3 animate-fade-in">
+                        <div class="bg-theme-gray-50/90 border border-theme-gray-200 rounded-xl p-3 mb-3">
                             <div class="flex items-start gap-2">
                                 <div class="text-theme-green-700 text-sm">🔒</div>
-                                <p class="text-xs text-theme-gray-600 leading-5">
-                                    En cliquant sur « Comparer », vous acceptez de transmettre vos informations à AKSAM ASSURANCES,
-                                    qui les utilisera conformément à sa politique de confidentialité.
-                                </p>
+                                <p class="text-xs text-theme-gray-600 leading-5">{{ 'form_privacy_notice'|trans }}</p>
                             </div>
                         </div>
 
                         <button type="submit"
                             class="w-full bg-theme-green-700 hover:bg-theme-green-800 text-white font-semibold py-3 rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition duration-300 animate-shimmer hover-glow">
-                            Comparer maintenant
+                            {{ 'form_submit'|trans }}
                         </button>
 
                         <div class="grid grid-cols-3 gap-2 text-center text-xs text-theme-gray-500 mt-3">
-                            <div class="bg-theme-green-50 rounded-lg py-1.5 animate-fade-in hover-lift">✅ Gratuit</div>
-                            <div class="bg-theme-green-50 rounded-lg py-1.5 animate-fade-in delay-100 hover-lift">⚡ Rapide</div>
-                            <div class="bg-theme-green-50 rounded-lg py-1.5 animate-fade-in delay-200 hover-lift">🔒 Sécurisé</div>
+                            <div class="bg-theme-green-50 rounded-lg py-1.5 hover-lift">{{ 'form_badge_free'|trans }}</div>
+                            <div class="bg-theme-green-50 rounded-lg py-1.5 hover-lift">{{ 'form_badge_fast'|trans }}</div>
+                            <div class="bg-theme-green-50 rounded-lg py-1.5 hover-lift">{{ 'form_badge_secure'|trans }}</div>
                         </div>
                     </div>
                 </form>
             </div>
-
         </div>
 
-        {# CONTENT SECTIONS BELOW HERO #}
+        {# CONTENT SECTIONS #}
         <div class="space-y-6 animate-fade-in">
+
             {# TRUST BAR #}
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div class="bg-white/80 backdrop-blur-xl rounded-3xl shadow-xl border border-theme-gray-200 p-5 hover:shadow-2xl hover:scale-[1.01] transition duration-500 animate-fade-in-up delay-100 hover-lift hover-glow">
+                <div class="bg-white/80 backdrop-blur-xl rounded-3xl shadow-xl border border-theme-gray-200 p-5 hover:shadow-2xl transition duration-500 animate-fade-in-up delay-100 hover-lift hover-glow">
                     <div class="text-2xl mb-2">⭐</div>
-                    <h3 class="font-semibold text-theme-gray-900 mb-1">Service fiable</h3>
-                    <p class="text-sm text-theme-gray-600">Une solution claire et adaptée aux professionnels du transport.</p>
+                    <h3 class="font-semibold text-theme-gray-900 mb-1">{{ 'trust_reliable_title'|trans }}</h3>
+                    <p class="text-sm text-theme-gray-600">{{ 'trust_reliable_desc'|trans }}</p>
                 </div>
-
-                <div class="bg-white/80 backdrop-blur-xl rounded-3xl shadow-xl border border-theme-gray-200 p-5 hover:shadow-2xl hover:scale-[1.01] transition duration-500 animate-fade-in-up delay-200 hover-lift hover-glow">
+                <div class="bg-white/80 backdrop-blur-xl rounded-3xl shadow-xl border border-theme-gray-200 p-5 hover:shadow-2xl transition duration-500 animate-fade-in-up delay-200 hover-lift hover-glow">
                     <div class="text-2xl mb-2">🚀</div>
-                    <h3 class="font-semibold text-theme-gray-900 mb-1">Réponse rapide</h3>
-                    <p class="text-sm text-theme-gray-600">Obtenez un devis personnalisé en quelques clics seulement.</p>
+                    <h3 class="font-semibold text-theme-gray-900 mb-1">{{ 'trust_fast_title'|trans }}</h3>
+                    <p class="text-sm text-theme-gray-600">{{ 'trust_fast_desc'|trans }}</p>
                 </div>
-
-                <div class="bg-white/80 backdrop-blur-xl rounded-3xl shadow-xl border border-theme-gray-200 p-5 hover:shadow-2xl hover:scale-[1.01] transition duration-500 animate-fade-in-up delay-300 hover-lift hover-glow">
+                <div class="bg-white/80 backdrop-blur-xl rounded-3xl shadow-xl border border-theme-gray-200 p-5 hover:shadow-2xl transition duration-500 animate-fade-in-up delay-300 hover-lift hover-glow">
                     <div class="text-2xl mb-2">🔒</div>
-                    <h3 class="font-semibold text-theme-gray-900 mb-1">Données sécurisées</h3>
-                    <p class="text-sm text-theme-gray-600">Traitement confidentiel des informations dans le respect du RGPD.</p>
+                    <h3 class="font-semibold text-theme-gray-900 mb-1">{{ 'trust_secure_title'|trans }}</h3>
+                    <p class="text-sm text-theme-gray-600">{{ 'trust_secure_desc'|trans }}</p>
                 </div>
             </div>
 
-            {# INTRO SECTION #}
-            <section class="bg-white/80 backdrop-blur-xl rounded-3xl shadow-xl border border-theme-gray-200 p-6 hover:shadow-2xl hover:scale-[1.01] transition duration-500 animate-fade-in-up delay-400 hover-lift hover-glow">
+            {# PRESENTATION #}
+            <section class="bg-white/80 backdrop-blur-xl rounded-3xl shadow-xl border border-theme-gray-200 p-6 hover:shadow-2xl transition duration-500 animate-fade-in-up delay-400 hover-lift hover-glow">
                 <div class="flex items-center gap-3 mb-4">
-                    <div class="w-10 h-10 rounded-full bg-theme-green-100 flex items-center justify-center text-theme-green-700 font-bold animate-scale-in">1</div>
-                    <h2 class="text-xl font-bold text-theme-gray-900 animate-fade-in-up">Présentation générale</h2>
+                    <div class="w-10 h-10 rounded-full bg-theme-green-100 flex items-center justify-center text-theme-green-700 font-bold">1</div>
+                    <h2 class="text-xl font-bold text-theme-gray-900">{{ 'section_presentation'|trans }}</h2>
                 </div>
-
-                <p class="text-theme-gray-700 leading-7 mb-4 animate-fade-in">
-                    L'activité de transport de marchandises, également appelée transport terrestre ou transport par conduites,
-                    est codifiée par l'INSEE sous le code 49. Le transport routier de marchandises à titre onéreux
-                    correspond au code NAF 4941.
-                </p>
-
+                <p class="text-theme-gray-700 leading-7 mb-4">{{ 'section_presentation_desc'|trans }}</p>
                 <div class="grid sm:grid-cols-2 gap-4">
-                    <div class="rounded-2xl bg-theme-green-50 border border-theme-green-100 p-4 animate-fade-in-up hover-lift">
-                        <h3 class="font-semibold text-theme-green-800 mb-1">4941A</h3>
-                        <p class="text-sm text-theme-gray-700">Transports routiers de fret interurbains</p>
+                    <div class="rounded-2xl bg-theme-green-50 border border-theme-green-100 p-4 hover-lift">
+                        <h3 class="font-semibold text-theme-green-800 mb-1">{{ 'section_code_4941a'|trans }}</h3>
+                        <p class="text-sm text-theme-gray-700">{{ 'section_code_4941a_desc'|trans }}</p>
                     </div>
-                    <div class="rounded-2xl bg-theme-green-50 border border-theme-green-100 p-4 animate-fade-in-up delay-100 hover-lift">
-                        <h3 class="font-semibold text-theme-green-800 mb-1">4941B</h3>
-                        <p class="text-sm text-theme-gray-700">Transports routiers de fret de proximité</p>
+                    <div class="rounded-2xl bg-theme-green-50 border border-theme-green-100 p-4 hover-lift">
+                        <h3 class="font-semibold text-theme-green-800 mb-1">{{ 'section_code_4941b'|trans }}</h3>
+                        <p class="text-sm text-theme-gray-700">{{ 'section_code_4941b_desc'|trans }}</p>
                     </div>
                 </div>
             </section>
 
-            {# TYPES SECTION #}
-            <section class="bg-white/80 backdrop-blur-xl rounded-3xl shadow-xl border border-theme-gray-200 p-6 hover:shadow-2xl hover:scale-[1.01] transition duration-500 animate-fade-in-up delay-500 hover-lift hover-glow">
+            {# TRANSPORT TYPES #}
+            <section class="bg-white/80 backdrop-blur-xl rounded-3xl shadow-xl border border-theme-gray-200 p-6 hover:shadow-2xl transition duration-500 animate-fade-in-up delay-500 hover-lift hover-glow">
                 <div class="flex items-center gap-3 mb-5">
-                    <div class="w-10 h-10 rounded-full bg-theme-green-100 flex items-center justify-center text-theme-green-700 font-bold animate-scale-in">2</div>
-                    <h2 class="text-xl font-bold text-theme-gray-900 animate-fade-in-up">Types de transport concernés</h2>
+                    <div class="w-10 h-10 rounded-full bg-theme-green-100 flex items-center justify-center text-theme-green-700 font-bold">2</div>
+                    <h2 class="text-xl font-bold text-theme-gray-900">{{ 'section_transport_types'|trans }}</h2>
                 </div>
-
                 <div class="grid md:grid-cols-2 gap-4">
-                    <div class="rounded-2xl border border-theme-gray-200 p-5 bg-theme-gray-50 animate-fade-in-up hover-lift">
-                        <h3 class="font-semibold text-theme-gray-900 mb-2">🚛 Poids lourds</h3>
-                        <p class="text-sm text-theme-gray-700 leading-6">
-                            Transport de marchandises avec un véhicule de plus de 3,5 tonnes de PTAC,
-                            comme un camion ou un tracteur routier avec ou sans semi-remorque.
-                        </p>
+                    <div class="rounded-2xl border border-theme-gray-200 p-5 bg-theme-gray-50 hover-lift">
+                        <h3 class="font-semibold text-theme-gray-900 mb-2">{{ 'section_heavy_vehicles'|trans }}</h3>
+                        <p class="text-sm text-theme-gray-700 leading-6">{{ 'section_heavy_vehicles_desc'|trans }}</p>
                     </div>
-
-                    <div class="rounded-2xl border border-theme-gray-200 p-5 bg-theme-gray-50 animate-fade-in-up delay-100 hover-lift">
-                        <h3 class="font-semibold text-theme-gray-900 mb-2">🚐 Véhicules légers</h3>
-                        <p class="text-sm text-theme-gray-700 leading-6">
-                            Transport de marchandises avec un véhicule de moins de 3,5 tonnes de PTAC,
-                            comme un utilitaire, une camionnette ou un fourgon.
-                        </p>
+                    <div class="rounded-2xl border border-theme-gray-200 p-5 bg-theme-gray-50 hover-lift">
+                        <h3 class="font-semibold text-theme-gray-900 mb-2">{{ 'section_light_vehicles'|trans }}</h3>
+                        <p class="text-sm text-theme-gray-700 leading-6">{{ 'section_light_vehicles_desc'|trans }}</p>
                     </div>
                 </div>
             </section>
 
-            {# OBLIGATIONS SECTION #}
-            <section class="bg-white/80 backdrop-blur-xl rounded-3xl shadow-xl border border-theme-gray-200 p-6 hover:shadow-2xl hover:scale-[1.01] transition duration-500 animate-fade-in-up delay-600 hover-lift hover-glow">
+            {# OBLIGATIONS #}
+            <section class="bg-white/80 backdrop-blur-xl rounded-3xl shadow-xl border border-theme-gray-200 p-6 hover:shadow-2xl transition duration-500 animate-fade-in-up delay-600 hover-lift hover-glow">
                 <div class="flex items-center gap-3 mb-5">
-                    <div class="w-10 h-10 rounded-full bg-theme-green-100 flex items-center justify-center text-theme-green-700 font-bold animate-scale-in">3</div>
-                    <h2 class="text-xl font-bold text-theme-gray-900 animate-fade-in-up">Obligations d'assurance</h2>
+                    <div class="w-10 h-10 rounded-full bg-theme-green-100 flex items-center justify-center text-theme-green-700 font-bold">3</div>
+                    <h2 class="text-xl font-bold text-theme-gray-900">{{ 'section_obligations'|trans }}</h2>
                 </div>
-
                 <div class="space-y-5">
-                    <div class="rounded-2xl border border-theme-green-100 bg-theme-green-50 p-5 animate-fade-in-up hover-lift">
-                        <h3 class="font-semibold text-theme-green-800 mb-2">1. Assurance des véhicules</h3>
-                        <p class="text-sm text-theme-gray-700 leading-6 mb-3 animate-fade-in">
-                            Tous les véhicules utilisés pour le transport public de marchandises doivent être assurés
-                            pour usage professionnel avec la mention obligatoire :
-                            <span class="font-semibold text-theme-green-800">Transport Public de Marchandises (TPM)</span>.
-                        </p>
-
-                        <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 text-sm">
-                            <div class="bg-white rounded-xl px-3 py-2 border border-theme-gray-200 animate-fade-in hover-lift">Camion</div>
-                            <div class="bg-white rounded-xl px-3 py-2 border border-theme-gray-200 animate-fade-in delay-100 hover-lift">Camionnette</div>
-                            <div class="bg-white rounded-xl px-3 py-2 border border-theme-gray-200 animate-fade-in delay-200 hover-lift">Poids lourd</div>
-                            <div class="bg-white rounded-xl px-3 py-2 border border-theme-gray-200 animate-fade-in delay-300 hover-lift">Tracteur routier</div>
-                            <div class="bg-white rounded-xl px-3 py-2 border border-theme-gray-200 animate-fade-in delay-400 hover-lift">Utilitaire</div>
-                            <div class="bg-white rounded-xl px-3 py-2 border border-theme-gray-200 animate-fade-in delay-500 hover-lift">Fourgon</div>
-                            <div class="bg-white rounded-xl px-3 py-2 border border-theme-gray-200 col-span-2 sm:col-span-1 animate-fade-in delay-600 hover-lift">Semi-remorque</div>
+                    <div class="rounded-2xl border border-theme-green-100 bg-theme-green-50 p-5 hover-lift">
+                        <h3 class="font-semibold text-theme-green-800 mb-2">{{ 'section_vehicle_insurance'|trans }}</h3>
+                        <p class="text-sm text-theme-gray-700 leading-6 mb-3">{{ 'section_vehicle_insurance_desc'|trans }}</p>
+                        <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 text-sm mb-4">
+                            <div class="bg-white rounded-xl px-3 py-2 border border-theme-gray-200 hover-lift">{{ 'section_vehicle_truck'|trans }}</div>
+                            <div class="bg-white rounded-xl px-3 py-2 border border-theme-gray-200 hover-lift">{{ 'section_vehicle_van'|trans }}</div>
+                            <div class="bg-white rounded-xl px-3 py-2 border border-theme-gray-200 hover-lift">{{ 'section_vehicle_heavy'|trans }}</div>
+                            <div class="bg-white rounded-xl px-3 py-2 border border-theme-gray-200 hover-lift">{{ 'section_vehicle_tractor'|trans }}</div>
+                            <div class="bg-white rounded-xl px-3 py-2 border border-theme-gray-200 hover-lift">{{ 'section_vehicle_utility'|trans }}</div>
+                            <div class="bg-white rounded-xl px-3 py-2 border border-theme-gray-200 hover-lift">{{ 'section_vehicle_fourgon'|trans }}</div>
+                            <div class="bg-white rounded-xl px-3 py-2 border border-theme-gray-200 col-span-2 sm:col-span-1 hover-lift">{{ 'section_vehicle_semi'|trans }}</div>
                         </div>
-
-                        <div class="mt-4 grid sm:grid-cols-2 gap-3">
-                            <div class="bg-white rounded-2xl border border-theme-gray-200 p-4 animate-fade-in-up hover-lift">
-                                <h4 class="font-semibold text-theme-gray-900 mb-1">Contrat mono-véhicule</h4>
-                                <p class="text-sm text-theme-gray-600">Pour un parc jusqu'à 4 véhicules.</p>
-                            </div>
-                            <div class="bg-white rounded-2xl border border-theme-gray-200 p-4 animate-fade-in-up delay-100 hover-lift">
-                                <h4 class="font-semibold text-theme-gray-900 mb-1">Contrat flotte</h4>
-                                <p class="text-sm text-theme-gray-600">Pour un parc supérieur à 4 véhicules.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="rounded-2xl border border-theme-green-100 bg-theme-green-50 p-5 animate-fade-in-up delay-100 hover-lift">
-                        <h3 class="font-semibold text-theme-green-800 mb-2">2. RC marchandises transportées</h3>
-                        <p class="text-sm text-theme-gray-700 leading-6 mb-4 animate-fade-in">
-                            Cette assurance couvre les marchandises transportées contre les risques de détérioration
-                            ou de sinistre survenus pendant le transport.
-                        </p>
-
                         <div class="grid sm:grid-cols-2 gap-3">
-                            <div class="bg-white rounded-xl border border-theme-gray-200 p-4 animate-fade-in-up hover-lift">
-                                <h4 class="font-semibold text-theme-gray-900 text-sm mb-1">Police au voyage</h4>
-                                <p class="text-xs text-theme-gray-600">Pour les transports occasionnels.</p>
+                            <div class="bg-white rounded-2xl border border-theme-gray-200 p-4 hover-lift">
+                                <h4 class="font-semibold text-theme-gray-900 mb-1">{{ 'section_single_contract'|trans }}</h4>
+                                <p class="text-sm text-theme-gray-600">{{ 'section_single_contract_desc'|trans }}</p>
                             </div>
-                            <div class="bg-white rounded-xl border border-theme-gray-200 p-4 animate-fade-in-up delay-100 hover-lift">
-                                <h4 class="font-semibold text-theme-gray-900 text-sm mb-1">Police à alimenter</h4>
-                                <p class="text-xs text-theme-gray-600">Pour des livraisons répétées avec déclaration.</p>
+                            <div class="bg-white rounded-2xl border border-theme-gray-200 p-4 hover-lift">
+                                <h4 class="font-semibold text-theme-gray-900 mb-1">{{ 'section_fleet_contract'|trans }}</h4>
+                                <p class="text-sm text-theme-gray-600">{{ 'section_fleet_contract_desc'|trans }}</p>
                             </div>
-                            <div class="bg-white rounded-xl border border-theme-gray-200 p-4 animate-fade-in-up delay-200 hover-lift">
-                                <h4 class="font-semibold text-theme-gray-900 text-sm mb-1">Police flottante</h4>
-                                <p class="text-xs text-theme-gray-600">Contrat ouvert sans limite stricte.</p>
+                        </div>
+                    </div>
+
+                    <div class="rounded-2xl border border-theme-green-100 bg-theme-green-50 p-5 hover-lift">
+                        <h3 class="font-semibold text-theme-green-800 mb-2">{{ 'section_cargo_insurance'|trans }}</h3>
+                        <p class="text-sm text-theme-gray-700 leading-6 mb-4">{{ 'section_cargo_insurance_desc'|trans }}</p>
+                        <div class="grid sm:grid-cols-2 gap-3">
+                            <div class="bg-white rounded-xl border border-theme-gray-200 p-4 hover-lift">
+                                <h4 class="font-semibold text-theme-gray-900 text-sm mb-1">{{ 'section_policy_voyage'|trans }}</h4>
+                                <p class="text-xs text-theme-gray-600">{{ 'section_policy_voyage_desc'|trans }}</p>
                             </div>
-                            <div class="bg-white rounded-xl border border-theme-gray-200 p-4 animate-fade-in-up delay-300 hover-lift">
-                                <h4 class="font-semibold text-theme-gray-900 text-sm mb-1">Police tiers chargeur</h4>
-                                <p class="text-xs text-theme-gray-600">Souscrite pour le compte des clients.</p>
+                            <div class="bg-white rounded-xl border border-theme-gray-200 p-4 hover-lift">
+                                <h4 class="font-semibold text-theme-gray-900 text-sm mb-1">{{ 'section_policy_alimenter'|trans }}</h4>
+                                <p class="text-xs text-theme-gray-600">{{ 'section_policy_alimenter_desc'|trans }}</p>
+                            </div>
+                            <div class="bg-white rounded-xl border border-theme-gray-200 p-4 hover-lift">
+                                <h4 class="font-semibold text-theme-gray-900 text-sm mb-1">{{ 'section_policy_floating'|trans }}</h4>
+                                <p class="text-xs text-theme-gray-600">{{ 'section_policy_floating_desc'|trans }}</p>
+                            </div>
+                            <div class="bg-white rounded-xl border border-theme-gray-200 p-4 hover-lift">
+                                <h4 class="font-semibold text-theme-gray-900 text-sm mb-1">{{ 'section_policy_third_party'|trans }}</h4>
+                                <p class="text-xs text-theme-gray-600">{{ 'section_policy_third_party_desc'|trans }}</p>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
 
-            {# DOCUMENTS SECTION #}
-            <section class="bg-white/80 backdrop-blur-xl rounded-3xl shadow-xl border border-theme-gray-200 p-6 hover:shadow-2xl hover:scale-[1.01] transition duration-500 animate-fade-in-up delay-700 hover-lift hover-glow">
+            {# DOCUMENTS #}
+            <section class="bg-white/80 backdrop-blur-xl rounded-3xl shadow-xl border border-theme-gray-200 p-6 hover:shadow-2xl transition duration-500 animate-fade-in-up delay-700 hover-lift hover-glow">
                 <div class="flex items-center gap-3 mb-5">
-                    <div class="w-10 h-10 rounded-full bg-theme-green-100 flex items-center justify-center text-theme-green-700 font-bold animate-scale-in">4</div>
-                    <h2 class="text-xl font-bold text-theme-gray-900 animate-fade-in-up">Documents pour obtenir un devis</h2>
+                    <div class="w-10 h-10 rounded-full bg-theme-green-100 flex items-center justify-center text-theme-green-700 font-bold">4</div>
+                    <h2 class="text-xl font-bold text-theme-gray-900">{{ 'section_documents'|trans }}</h2>
                 </div>
-
                 <div class="grid sm:grid-cols-2 gap-4">
-                    <div class="rounded-2xl bg-theme-gray-50 border border-theme-gray-200 p-4 animate-fade-in-up hover-lift">📄 KBIS</div>
-                    <div class="rounded-2xl bg-theme-gray-50 border border-theme-gray-200 p-4 animate-fade-in-up delay-100 hover-lift">📦 Nature des marchandises transportées</div>
-                    <div class="rounded-2xl bg-theme-gray-50 border border-theme-gray-200 p-4 animate-fade-in-up delay-200 hover-lift">💶 Valeur des marchandises transportées</div>
-                    <div class="rounded-2xl bg-theme-gray-50 border border-theme-gray-200 p-4 animate-fade-in-up delay-300 hover-lift">🚚 Nombre de véhicules concernés</div>
+                    <div class="rounded-2xl bg-theme-gray-50 border border-theme-gray-200 p-4 hover-lift">{{ 'section_doc_kbis'|trans }}</div>
+                    <div class="rounded-2xl bg-theme-gray-50 border border-theme-gray-200 p-4 hover-lift">{{ 'section_doc_nature'|trans }}</div>
+                    <div class="rounded-2xl bg-theme-gray-50 border border-theme-gray-200 p-4 hover-lift">{{ 'section_doc_value'|trans }}</div>
+                    <div class="rounded-2xl bg-theme-gray-50 border border-theme-gray-200 p-4 hover-lift">{{ 'section_doc_vehicles'|trans }}</div>
                 </div>
             </section>
 
-            {# PRODUCTS SECTION #}
-            <section class="bg-white/80 backdrop-blur-xl rounded-3xl shadow-xl border border-theme-gray-200 p-6 hover:shadow-2xl hover:scale-[1.01] transition duration-500 animate-fade-in-up delay-800 hover-lift hover-glow">
+            {# SOLUTIONS #}
+            <section class="bg-white/80 backdrop-blur-xl rounded-3xl shadow-xl border border-theme-gray-200 p-6 hover:shadow-2xl transition duration-500 animate-fade-in-up delay-800 hover-lift hover-glow">
                 <div class="flex items-center gap-3 mb-5">
-                    <div class="w-10 h-10 rounded-full bg-theme-green-100 flex items-center justify-center text-theme-green-700 font-bold animate-scale-in">5</div>
-                    <h2 class="text-xl font-bold text-theme-gray-900 animate-fade-in-up">Nos solutions d'assurance</h2>
+                    <div class="w-10 h-10 rounded-full bg-theme-green-100 flex items-center justify-center text-theme-green-700 font-bold">5</div>
+                    <h2 class="text-xl font-bold text-theme-gray-900">{{ 'section_solutions'|trans }}</h2>
                 </div>
-
                 <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
-                    <div class="rounded-2xl border border-theme-gray-200 bg-theme-gray-50 p-4 text-sm font-medium text-theme-gray-700 animate-fade-in-up hover-lift">Assurance poids lourd</div>
-                    <div class="rounded-2xl border border-theme-gray-200 bg-theme-gray-50 p-4 text-sm font-medium text-theme-gray-700 animate-fade-in-up delay-100 hover-lift">Assurance camion</div>
-                    <div class="rounded-2xl border border-theme-gray-200 bg-theme-gray-50 p-4 text-sm font-medium text-theme-gray-700 animate-fade-in-up delay-200 hover-lift">Assurance camionnette</div>
-                    <div class="rounded-2xl border border-theme-gray-200 bg-theme-gray-50 p-4 text-sm font-medium text-theme-gray-700 animate-fade-in-up delay-300 hover-lift">Assurance véhicule utilitaire</div>
-                    <div class="rounded-2xl border border-theme-gray-200 bg-theme-gray-50 p-4 text-sm font-medium text-theme-gray-700 animate-fade-in-up delay-400 hover-lift">Assurance fourgon</div>
-                    <div class="rounded-2xl border border-theme-gray-200 bg-theme-gray-50 p-4 text-sm font-medium text-theme-gray-700 animate-fade-in-up delay-500 hover-lift">Assurance VAN</div>
-                    <div class="rounded-2xl border border-theme-gray-200 bg-theme-gray-50 p-4 text-sm font-medium text-theme-gray-700 animate-fade-in-up delay-600 hover-lift">Transport moins de 3,5 t</div>
-                    <div class="rounded-2xl border border-theme-gray-200 bg-theme-gray-50 p-4 text-sm font-medium text-theme-gray-700 animate-fade-in-up delay-700 hover-lift">Assurance flotte transport</div>
+                    <div class="rounded-2xl border border-theme-gray-200 bg-theme-gray-50 p-4 text-sm font-medium text-theme-gray-700 hover-lift">{{ 'solution_heavy'|trans }}</div>
+                    <div class="rounded-2xl border border-theme-gray-200 bg-theme-gray-50 p-4 text-sm font-medium text-theme-gray-700 hover-lift">{{ 'solution_truck'|trans }}</div>
+                    <div class="rounded-2xl border border-theme-gray-200 bg-theme-gray-50 p-4 text-sm font-medium text-theme-gray-700 hover-lift">{{ 'solution_van'|trans }}</div>
+                    <div class="rounded-2xl border border-theme-gray-200 bg-theme-gray-50 p-4 text-sm font-medium text-theme-gray-700 hover-lift">{{ 'solution_utility'|trans }}</div>
+                    <div class="rounded-2xl border border-theme-gray-200 bg-theme-gray-50 p-4 text-sm font-medium text-theme-gray-700 hover-lift">{{ 'solution_fourgon'|trans }}</div>
+                    <div class="rounded-2xl border border-theme-gray-200 bg-theme-gray-50 p-4 text-sm font-medium text-theme-gray-700 hover-lift">{{ 'solution_van_light'|trans }}</div>
+                    <div class="rounded-2xl border border-theme-gray-200 bg-theme-gray-50 p-4 text-sm font-medium text-theme-gray-700 hover-lift">{{ 'solution_light_transport'|trans }}</div>
+                    <div class="rounded-2xl border border-theme-gray-200 bg-theme-gray-50 p-4 text-sm font-medium text-theme-gray-700 hover-lift">{{ 'solution_fleet'|trans }}</div>
                 </div>
             </section>
 
-            {# CTA SECTION #}
+            {# CTA #}
             <section class="relative overflow-hidden bg-theme-green-700 text-white rounded-3xl shadow-xl p-8 hover:shadow-2xl transition duration-500 animate-fade-in-up cta-animate hover-glow">
-                <center><div class="absolute -top-6 -right-6 w-28 h-28 bg-white/10 rounded-full animate-pulse-slow"></div>
+                <div class="absolute -top-6 -right-6 w-28 h-28 bg-white/10 rounded-full animate-pulse-slow"></div>
                 <div class="absolute -bottom-8 -left-8 w-36 h-36 bg-white/10 rounded-full animate-pulse-slow"></div>
-
-                <div class="relative z-10">
-                
-                    <p class="text-green-100 text-sm mb-2 animate-fade-in">Demande rapide et sans engagement</p>
-                    <h2 class="text-2xl md:text-3xl font-bold mb-3 animate-fade-in-up delay-100">
-                        Obtenez votre devis d'assurance transport
-                    </h2>
-                    <p class="text-green-50 max-w-2xl mb-6 animate-fade-in-up delay-200">
-                        Complétez le formulaire pour recevoir une proposition adaptée à votre activité,
-                        à votre parc de véhicules et à vos besoins professionnels.
-                    </p>
-
+                <div class="relative z-10 text-center">
+                    <p class="text-green-100 text-sm mb-2">{{ 'cta_subtitle'|trans }}</p>
+                    <h2 class="text-2xl md:text-3xl font-bold mb-6">{{ 'cta_title'|trans }}</h2>
                     <a href="#quote-form"
                        class="inline-flex items-center justify-center px-6 py-3 rounded-xl bg-white text-green-700 font-semibold shadow hover:scale-105 transform transition cta-button">
-                        Demander mon devis
+                        {{ 'cta_button'|trans }}
                     </a>
-                </div> </center>
+                </div>
             </section>
+
         </div>
     </div>
 </div>

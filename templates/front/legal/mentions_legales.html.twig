@@ -1,11 +1,10 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Mentions légales{% endblock %}
+{% block title %}{{ 'legal_title'|trans }}{% endblock %}
 
 {% block body %}
 <div class="relative min-h-screen bg-theme-gradient py-16 px-4 overflow-hidden">
 
-    {# BACKGROUND BLOBS #}
     <div class="absolute -top-32 -left-32 w-96 h-96 bg-theme-green-100 opacity-20 rounded-full blur-3xl"></div>
     <div class="absolute -bottom-32 -right-32 w-96 h-96 bg-theme-green-100 opacity-20 rounded-full blur-3xl"></div>
 
@@ -14,127 +13,95 @@
         {# HERO #}
         <div class="text-center mb-14">
             <span class="inline-block px-4 py-2 bg-theme-green-100 text-theme-green-800 rounded-full text-sm font-semibold mb-4 shadow-sm">
-                ⚖️ Informations légales
+                {{ 'legal_badge'|trans }}
             </span>
-
             <h1 class="text-4xl md:text-5xl font-extrabold text-theme-gray-900 mb-4 tracking-tight">
-                Mentions légales
+                {{ 'legal_title'|trans }}
             </h1>
-
             <p class="text-gray-600 max-w-2xl mx-auto leading-7">
-                Consultez toutes les informations relatives à l’éditeur du site, à l’hébergement,
-                à la protection des données personnelles et à vos droits.
+                {{ 'legal_intro'|trans }}
             </p>
         </div>
 
-        {# CARDS CONTAINER #}
         <div class="space-y-8">
 
-            {# CARD #}
+            {# EDITEUR #}
             <div class="bg-white/80 backdrop-blur-xl rounded-3xl shadow-xl p-8 border border-theme-gray-200 hover:shadow-2xl transition duration-500">
-                <h2 class="text-2xl font-bold text-theme-gray-900 mb-4">🏢 Éditeur</h2>
-
-                <p class="text-theme-gray-700 leading-7 mb-4">
-                    AKSAM ASSURANCES SARL AU, au capital de 10.000 €,
-                    située au 10 Rue de Penthièvre, 75008 Paris.
-                </p>
-
+                <h2 class="text-2xl font-bold text-theme-gray-900 mb-4">{{ 'legal_editor'|trans }}</h2>
+                <p class="text-theme-gray-700 leading-7 mb-4">{{ 'legal_editor_desc'|trans }}</p>
                 <div class="grid sm:grid-cols-2 gap-4 text-sm">
-                    <div class="bg-theme-green-50 rounded-xl p-4 border border-theme-green-100">SIRET : 84065346300033</div>
-                    <div class="bg-theme-green-50 rounded-xl p-4 border border-theme-green-100">RCS : 840 653 463</div>
-                    <div class="bg-theme-green-50 rounded-xl p-4 border border-theme-green-100">ORIAS : 180 074 24</div>
-                    <div class="bg-theme-green-50 rounded-xl p-4 border border-theme-green-100">RC professionnelle conforme</div>
+                    <div class="bg-theme-green-50 rounded-xl p-4 border border-theme-green-100">{{ 'legal_siret'|trans }}</div>
+                    <div class="bg-theme-green-50 rounded-xl p-4 border border-theme-green-100">{{ 'legal_rcs'|trans }}</div>
+                    <div class="bg-theme-green-50 rounded-xl p-4 border border-theme-green-100">{{ 'legal_orias'|trans }}</div>
+                    <div class="bg-theme-green-50 rounded-xl p-4 border border-theme-green-100">{{ 'legal_rc'|trans }}</div>
                 </div>
             </div>
 
-            {# CARD #}
+            {# HEBERGEUR #}
             <div class="bg-white/80 backdrop-blur-xl rounded-3xl shadow-xl p-8 border border-theme-gray-200 hover:shadow-2xl transition duration-500">
-                <h2 class="text-2xl font-bold text-theme-gray-900 mb-4">🌐 Hébergeur</h2>
-
-                <p class="text-theme-gray-700 leading-7">
-                    Le site est hébergé par <strong>NAMECHEAP</strong>,
-                    EU Data Center, Amsterdam.
-                </p>
+                <h2 class="text-2xl font-bold text-theme-gray-900 mb-4">{{ 'legal_host'|trans }}</h2>
+                <p class="text-theme-gray-700 leading-7">{{ 'legal_host_desc'|trans }}</p>
             </div>
 
-            {# CARD #}
+            {# LIENS #}
             <div class="bg-white/80 backdrop-blur-xl rounded-3xl shadow-xl p-8 border border-theme-gray-200 hover:shadow-2xl transition duration-500">
-                <h2 class="text-2xl font-bold text-theme-gray-900 mb-4">🔗 Liens hypertextes</h2>
-
-                <p class="text-theme-gray-700 leading-7">
-                    Les contenus accessibles via des liens externes sont sous la responsabilité de leurs auteurs.
-                    Aucun lien vers le site ne peut être créé sans autorisation préalable.
-                </p>
+                <h2 class="text-2xl font-bold text-theme-gray-900 mb-4">{{ 'legal_links'|trans }}</h2>
+                <p class="text-theme-gray-700 leading-7">{{ 'legal_links_desc'|trans }}</p>
             </div>
 
-            {# CARD COOKIES #}
+            {# COOKIES #}
             <div class="bg-white/80 backdrop-blur-xl rounded-3xl shadow-xl p-8 border border-theme-gray-200 hover:shadow-2xl transition duration-500">
-                <h2 class="text-2xl font-bold text-theme-gray-900 mb-6">🍪 Cookies</h2>
-
+                <h2 class="text-2xl font-bold text-theme-gray-900 mb-6">{{ 'legal_cookies'|trans }}</h2>
                 <div class="grid md:grid-cols-3 gap-4">
                     <div class="bg-green-50 rounded-xl p-4 border hover:scale-105 transition">
-                        <h3 class="font-semibold text-green-800 mb-2">Fonctionnels</h3>
-                        <p class="text-sm text-gray-700">Améliorent l’expérience utilisateur.</p>
+                        <h3 class="font-semibold text-green-800 mb-2">{{ 'legal_cookies_functional'|trans }}</h3>
+                        <p class="text-sm text-gray-700">{{ 'legal_cookies_functional_desc'|trans }}</p>
                     </div>
-
                     <div class="bg-green-50 rounded-xl p-4 border hover:scale-105 transition">
-                        <h3 class="font-semibold text-green-800 mb-2">Statistiques</h3>
-                        <p class="text-sm text-gray-700">Analysent la fréquentation du site.</p>
+                        <h3 class="font-semibold text-green-800 mb-2">{{ 'legal_cookies_stats'|trans }}</h3>
+                        <p class="text-sm text-gray-700">{{ 'legal_cookies_stats_desc'|trans }}</p>
                     </div>
-
                     <div class="bg-green-50 rounded-xl p-4 border hover:scale-105 transition">
-                        <h3 class="font-semibold text-green-800 mb-2">Réseaux sociaux</h3>
-                        <p class="text-sm text-gray-700">Permettent le partage.</p>
+                        <h3 class="font-semibold text-green-800 mb-2">{{ 'legal_cookies_social'|trans }}</h3>
+                        <p class="text-sm text-gray-700">{{ 'legal_cookies_social_desc'|trans }}</p>
                     </div>
                 </div>
             </div>
 
-            {# DATA #}
+            {# DONNEES #}
             <div class="bg-white/80 backdrop-blur-xl rounded-3xl shadow-xl p-8 border border-theme-gray-200 hover:shadow-2xl transition duration-500">
-                <h2 class="text-2xl font-bold text-theme-gray-900 mb-4">🔒 Données personnelles</h2>
-
-                <p class="text-gray-700 leading-7 mb-4">
-                    Vos données sont traitées dans le respect de la réglementation.
-                    Vous disposez d’un droit d’accès, de modification et de suppression.
-                </p>
-
+                <h2 class="text-2xl font-bold text-theme-gray-900 mb-4">{{ 'legal_data'|trans }}</h2>
+                <p class="text-gray-700 leading-7 mb-4">{{ 'legal_data_desc'|trans }}</p>
                 <div class="bg-theme-gray-100 rounded-xl p-4 text-sm">
-                    contact@aksam-assurances.fr <br>
+                    contact@aksam-assurances.fr<br>
                     10 Rue de Penthièvre, 75008 Paris
                 </div>
             </div>
 
-            {# RIGHTS #}
+            {# DROITS #}
             <div class="bg-white/80 backdrop-blur-xl rounded-3xl shadow-xl p-8 border border-theme-gray-200 hover:shadow-2xl transition duration-500">
-                <h2 class="text-2xl font-bold text-theme-gray-900 mb-4">📜 Vos droits</h2>
-
+                <h2 class="text-2xl font-bold text-theme-gray-900 mb-4">{{ 'legal_rights'|trans }}</h2>
                 <ul class="space-y-2 text-theme-gray-700 list-disc pl-5">
-                    <li>Accéder à vos données</li>
-                    <li>Les modifier ou supprimer</li>
-                    <li>Vous opposer au traitement</li>
-                    <li>Demander une copie</li>
+                    <li>{{ 'legal_rights_access'|trans }}</li>
+                    <li>{{ 'legal_rights_modify'|trans }}</li>
+                    <li>{{ 'legal_rights_oppose'|trans }}</li>
+                    <li>{{ 'legal_rights_copy'|trans }}</li>
                 </ul>
             </div>
 
-            {# INTELLECTUAL #}
+            {# PROPRIETE INTELLECTUELLE #}
             <div class="bg-white/80 backdrop-blur-xl rounded-3xl shadow-xl p-8 border border-theme-gray-200 hover:shadow-2xl transition duration-500">
-                <h2 class="text-2xl font-bold text-theme-gray-900 mb-4">🧠 Propriété intellectuelle</h2>
-
-                <p class="text-theme-gray-700 leading-7">
-                    Tout le contenu du site est protégé. Toute reproduction est interdite sans autorisation.
-                </p>
+                <h2 class="text-2xl font-bold text-theme-gray-900 mb-4">{{ 'legal_intellectual'|trans }}</h2>
+                <p class="text-theme-gray-700 leading-7">{{ 'legal_intellectual_desc'|trans }}</p>
             </div>
 
-            {# CTA FINAL 🔥 #}
+            {# CTA #}
             <div class="bg-theme-green-700 text-white rounded-3xl p-8 shadow-xl text-center">
-                <h2 class="text-2xl font-bold mb-3">Une question ?</h2>
-                <p class="text-theme-green-100 mb-6">
-                    Notre équipe est disponible pour répondre à toutes vos demandes.
-                </p>
-
-                <a href="{{ path('homepage') }}"
+                <h2 class="text-2xl font-bold mb-3">{{ 'legal_cta_title'|trans }}</h2>
+                <p class="text-theme-green-100 mb-6">{{ 'legal_cta_desc'|trans }}</p>
+                <a href="{{ path('homepage', {_locale: app.request.locale}) }}"
                    class="inline-block px-6 py-3 bg-white text-theme-green-700 font-semibold rounded-xl shadow hover:scale-105 transition">
-                    Retour à l’accueil
+                    {{ 'legal_cta_button'|trans }}
                 </a>
             </div>
 

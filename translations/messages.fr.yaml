@@ -1,5 +1,5 @@
 # Common
-site_name: "Aksam Assurance"
+site_name: "AKSAM Assurances"
 site_tagline: "Professionnels du transport, obtenez votre devis en quelques clics"
 site_description: "Solution rapide, claire et sécurisée pour vos besoins d'assurance transport"
 
@@ -15,7 +15,7 @@ header_badge_fast: "🚀 Devis rapide"
 header_theme_toggle: "Changer le thème"
 
 # Footer
-footer_company: "Aksam Assurance"
+footer_company: "AKSAM Assurances"
 footer_control: "Entreprise soumise au contrôle de l'ACPR"
 footer_information: "Informations"
 footer_contact: "Contact"
@@ -62,7 +62,7 @@ form_placeholder_motif: "Motif"
 form_placeholder_postcode: "Code postal"
 form_placeholder_phone: "Téléphone"
 form_placeholder_email: "Email"
-form_privacy_notice: 'En cliquant sur « Comparer », vous acceptez de transmettre vos informations à AKSAM ASSURANCES, qui les utilisera conformément à sa politique de confidentialité.'
+form_privacy_notice: "En cliquant sur « Comparer », vous acceptez de transmettre vos informations à AKSAM ASSURANCES, qui les utilisera conformément à sa politique de confidentialité."
 form_submit: "Comparer maintenant"
 form_badge_free: "✅ Gratuit"
 form_badge_fast: "⚡ Rapide"
@@ -129,12 +129,12 @@ solution_fleet: "Assurance flotte transport"
 
 # CTA Section
 cta_title: "Prêt à protéger votre activité de transport ?"
-cta_subtitle: "Obtenez votre devis personnalisé en moins de 2 minutes"
-cta_button: "Demander un devis gratuit"
+cta_subtitle: "Obtenez un devis personnalisé en moins de 2 minutes"
+cta_button: "Demander mon devis gratuit"
 
 # Quote Page
 quote_title: "Devis Assurance Transport"
-quote_subtitle: "Remplissez le formulaire ci-dessous pour recevoir votre devis personnalisé"
+quote_subtitle: "Remplissez le formulaire ci-dessous pour recevoir un devis personnalisé"
 
 # Legal Pages
 legal_title: "Mentions légales"

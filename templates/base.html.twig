@@ -1,19 +1,27 @@
 <!DOCTYPE html>
-<html lang="fr" data-theme="light">
+<html lang="{{ app.request.locale }}" dir="{{ app.request.locale == 'ar' ? 'rtl' : 'ltr' }}" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Expert en assurance transport. Devis gratuit pour camion, flotte, fret.">
-    <title>{% block title %}Aksam Assurance - Devis Gratuit{% endblock %}</title>
+    <meta name="description" content="{{ 'site_description'|trans }}">
+    <meta name="turbo-visit-control" content="reload">
+    <title>{% block title %}{{ 'site_name'|trans }} - {{ 'site_tagline'|trans }}{% endblock %}</title>
 
     {# Fonts #}
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
     {# Styles #}
     {% block stylesheets %}
-        <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+        <link href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
+        {% if app.request.locale == 'ar' %}
+        <style>
+            body { font-family: 'Segoe UI', Tahoma, Arial, sans-serif; }
+            .rtl-flip { transform: scaleX(-1); }
+        </style>
+        {% endif %}
 
         <script>
             (function () {
@@ -28,19 +36,14 @@
                 const next = current === 'dark' ? 'light' : 'dark';
                 document.documentElement.setAttribute('data-theme', next);
                 localStorage.setItem('theme', next);
-
                 const icon = document.getElementById('theme-icon');
-                if (icon) {
-                    icon.textContent = next === 'dark' ? '☀️' : '🌙';
-                }
+                if (icon) icon.textContent = next === 'dark' ? '☀️' : '🌙';
             }
 
             document.addEventListener('DOMContentLoaded', function () {
                 const current = document.documentElement.getAttribute('data-theme');
                 const icon = document.getElementById('theme-icon');
-                if (icon) {
-                    icon.textContent = current === 'dark' ? '☀️' : '🌙';
-                }
+                if (icon) icon.textContent = current === 'dark' ? '☀️' : '🌙';
             });
         </script>
     {% endblock %}
@@ -58,40 +61,52 @@
             <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-0">
                 <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
 
-                    <a href="{{ path('homepage') }}" class="flex items-center gap-4 group">
+                    <a href="{{ path('homepage', {_locale: app.request.locale}) }}" class="flex items-center gap-4 group">
                         <div class="w-12 h-12 rounded-2xl glass flex items-center justify-center text-xl shadow-md float-soft">
                             🚚
                         </div>
-
                         <div class="hero-glow">
                             <p class="text-xs uppercase tracking-[0.25em] text-green-700 font-semibold mb-1">
-                                AKSAM ASSURANCE
+                                {{ 'site_name'|trans }}
                             </p>
-
                             <h1 class="text-lg sm:text-xl md:text-2xl font-extrabold tracking-tight animated-title leading-tight">
-                                Professionnels du transport, obtenez votre devis en quelques clics
+                                {{ 'site_tagline'|trans }}
                             </h1>
-
                             <p class="text-sm theme-soft-text mt-1 fade-up">
-                                Solution rapide, claire et sécurisée pour vos besoins d’assurance transport
+                                {{ 'site_description'|trans }}
                             </p>
                         </div>
                     </a>
 
                     <div class="flex items-center gap-3 flex-wrap">
                         <span class="inline-flex items-center px-4 py-2 rounded-full text-sm font-semibold shadow-sm badge-green">
-                            ⭐ Service fiable
+                            {{ 'header_badge_reliable'|trans }}
+                        </span>
+                        <span class="inline-flex items-center px-4 py-2 rounded-full text-sm font-semibold shadow-sm pulse-soft badge-amber">
+                            {{ 'header_badge_fast'|trans }}
                         </span>
 
-                        <span class="inline-flex items-center px-4 py-2 rounded-full text-sm font-semibold shadow-sm pulse-soft badge-amber">
-                            🚀 Devis rapide
-                        </span>
+                        {# Language Switcher #}
+                        <div class="flex items-center gap-1">
+                            <a href="{{ path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')|merge({_locale: 'fr'})) }}"
+                               class="px-3 py-1.5 rounded-full text-xs font-semibold transition {% if app.request.locale == 'fr' %}bg-green-700 text-white{% else %}bg-gray-100 text-gray-600 hover:bg-gray-200{% endif %}">
+                                FR
+                            </a>
+                            <a href="{{ path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')|merge({_locale: 'en'})) }}"
+                               class="px-3 py-1.5 rounded-full text-xs font-semibold transition {% if app.request.locale == 'en' %}bg-green-700 text-white{% else %}bg-gray-100 text-gray-600 hover:bg-gray-200{% endif %}">
+                                EN
+                            </a>
+                            <a href="{{ path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')|merge({_locale: 'ar'})) }}"
+                               class="px-3 py-1.5 rounded-full text-xs font-semibold transition {% if app.request.locale == 'ar' %}bg-green-700 text-white{% else %}bg-gray-100 text-gray-600 hover:bg-gray-200{% endif %}">
+                                AR
+                            </a>
+                        </div>
 
                         <button
                             type="button"
                             onclick="toggleTheme()"
                             class="theme-toggle inline-flex items-center justify-center px-4 py-2 rounded-full text-sm font-semibold shadow-sm"
-                            aria-label="Changer le thème">
+                            aria-label="{{ 'header_theme_toggle'|trans }}">
                             <span id="theme-icon">🌙</span>
                         </button>
                     </div>
@@ -104,7 +119,7 @@
 
     {# Flash Messages #}
     {% block flash_messages %}
-    <div class="max-w-7xl mx-auto w-full ">
+    <div class="max-w-7xl mx-auto w-full">
         {% for type, messages in app.flashes %}
             {% for message in messages %}
                 <div class="mb-4 p-4 rounded-2xl shadow-sm border fade-up {% if type == 'success' %}bg-green-50 text-green-800 border-green-200{% else %}bg-red-50 text-red-800 border-red-200{% endif %}">
@@ -122,57 +137,45 @@
 
     {# Footer #}
     {% block footer %}
-   <footer class="theme-footer py-10 w-full">
-    <div class="w-full px-6 md:px-10 lg:px-12">
-
+    <footer class="theme-footer py-10 w-full">
+        <div class="w-full px-6 md:px-10 lg:px-12">
             <div class="grid md:grid-cols-3 gap-8">
 
-                {# Logo #}
                 <div>
-                    <h3 class="font-bold text-lg mb-3">
-                        Aksam Assurance
-                    </h3>
-                    <p class="text-sm theme-footer-soft">
-Entreprise soumise au contrôle de l'ACPR                    </p>
+                    <h3 class="font-bold text-lg mb-3">{{ 'footer_company'|trans }}</h3>
+                    <p class="text-sm theme-footer-soft">{{ 'footer_control'|trans }}</p>
                 </div>
 
-                {# Links #}
                 <div>
-                    <h4 class="font-semibold mb-3">
-                        Informations
-                    </h4>
+                    <h4 class="font-semibold mb-3">{{ 'footer_information'|trans }}</h4>
                     <ul class="space-y-2 text-sm">
                         <li>
-                            <a href="{{ path('front_mentions_legales') }}" class="hover:text-white transition">
-                                Mentions légales
+                            <a href="{{ path('front_mentions_legales', {_locale: app.request.locale}) }}" class="hover:text-white transition">
+                                {{ 'nav_legal'|trans }}
                             </a>
                         </li>
                         <li>
-                            <a href="{{ path('front_politique_confidentialite') }}" class="hover:text-white transition">
-                                Politique de confidentialité
+                            <a href="{{ path('front_politique_confidentialite', {_locale: app.request.locale}) }}" class="hover:text-white transition">
+                                {{ 'nav_privacy'|trans }}
                             </a>
                         </li>
                     </ul>
                 </div>
 
-                {# Contact #}
                 <div>
-                    <h4 class="font-semibold mb-3">
-                        Contact
-                    </h4>
+                    <h4 class="font-semibold mb-3">{{ 'footer_contact'|trans }}</h4>
                     <ul class="space-y-2 text-sm theme-footer-soft">
-                        <li>📍 Paris</li>
-                        <li>📞 01 23 45 67 89</li>
-                        <li>✉️ contact@aksam-assurance.fr</li>
+                        <li>{{ 'footer_location'|trans }}</li>
+                        <li>{{ 'footer_phone'|trans }}</li>
+                        <li>{{ 'footer_email'|trans }}</li>
                     </ul>
                 </div>
 
             </div>
 
             <div class="border-t theme-footer-border mt-8 pt-6 text-center text-sm theme-footer-soft">
-               © 2018 Aksam Assurance. Tous droits réservés.
+                {{ 'footer_copyright'|trans }}
             </div>
-
         </div>
     </footer>
     {% endblock %}
@@ -181,5 +184,6 @@ Entreprise soumise au contrôle de l'ACPR                    </p>
     {% block javascripts %}
         {% block importmap %}{{ importmap('app') }}{% endblock %}
     {% endblock %}
+
 </body>
 </html>
