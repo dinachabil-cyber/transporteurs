@@ -15,7 +15,6 @@
     {# Styles #}
     {% block stylesheets %}
         <link href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-
         {% if app.request.locale == 'ar' %}
         <style>
             body { font-family: 'Segoe UI', Tahoma, Arial, sans-serif; }
@@ -58,7 +57,7 @@
             <div class="pointer-events-none absolute -top-10 left-10 w-40 h-40 bg-green-200 opacity-20 rounded-full blur-3xl"></div>
             <div class="pointer-events-none absolute -top-10 right-10 w-40 h-40 bg-amber-200 opacity-20 rounded-full blur-3xl"></div>
 
-            <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-0">
+            <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
                 <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
 
                     <a href="{{ path('homepage', {_locale: app.request.locale}) }}" class="flex items-center gap-4 group">
@@ -79,6 +78,8 @@
                     </a>
 
                     <div class="flex items-center gap-3 flex-wrap">
+
+                        {# Badges #}
                         <span class="inline-flex items-center px-4 py-2 rounded-full text-sm font-semibold shadow-sm badge-green">
                             {{ 'header_badge_reliable'|trans }}
                         </span>
@@ -86,27 +87,26 @@
                             {{ 'header_badge_fast'|trans }}
                         </span>
 
-                        {# Language Switcher #}
-                        <div class="flex items-center gap-1">
-                            <a href="{{ path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')|merge({_locale: 'fr'})) }}"
-                               class="px-3 py-1.5 rounded-full text-xs font-semibold transition {% if app.request.locale == 'fr' %}bg-green-700 text-white{% else %}bg-gray-100 text-gray-600 hover:bg-gray-200{% endif %}">
-                                FR
-                            </a>
-                            <a href="{{ path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')|merge({_locale: 'en'})) }}"
-                               class="px-3 py-1.5 rounded-full text-xs font-semibold transition {% if app.request.locale == 'en' %}bg-green-700 text-white{% else %}bg-gray-100 text-gray-600 hover:bg-gray-200{% endif %}">
-                                EN
-                            </a>
-                            <a href="{{ path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')|merge({_locale: 'ar'})) }}"
-                               class="px-3 py-1.5 rounded-full text-xs font-semibold transition {% if app.request.locale == 'ar' %}bg-green-700 text-white{% else %}bg-gray-100 text-gray-600 hover:bg-gray-200{% endif %}">
-                                AR
-                            </a>
+                        {# Language Dropdown #}
+                        <div class="relative">
+                            <button id="lang-button" class="px-4 py-2 rounded-full bg-gray-100 text-gray-700 font-semibold flex items-center gap-1">
+                                {{ app.request.locale|upper }} <span>▼</span>
+                            </button>
+
+                            <div id="lang-menu" class="absolute right-0 mt-2 w-32 bg-white border rounded-xl shadow-lg z-50 hidden">
+                                {% set languages = {'fr': 'FR', 'en': 'EN', 'ar': 'AR'} %}
+                                {% for code, label in languages %}
+                                    <a href="#" data-lang="{{ code }}" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">
+                                        {{ label }}
+                                    </a>
+                                {% endfor %}
+                            </div>
                         </div>
 
-                        <button
-                            type="button"
-                            onclick="toggleTheme()"
-                            class="theme-toggle inline-flex items-center justify-center px-4 py-2 rounded-full text-sm font-semibold shadow-sm"
-                            aria-label="{{ 'header_theme_toggle'|trans }}">
+                        {# Theme Toggle #}
+                        <button type="button" onclick="toggleTheme()"
+                                class="theme-toggle inline-flex items-center justify-center px-4 py-2 rounded-full text-sm font-semibold shadow-sm"
+                                aria-label="{{ 'header_theme_toggle'|trans }}">
                             <span id="theme-icon">🌙</span>
                         </button>
                     </div>
@@ -119,7 +119,7 @@
 
     {# Flash Messages #}
     {% block flash_messages %}
-    <div class="max-w-7xl mx-auto w-full">
+    <div class="max-w-7xl mx-auto w-full mt-4">
         {% for type, messages in app.flashes %}
             {% for message in messages %}
                 <div class="mb-4 p-4 rounded-2xl shadow-sm border fade-up {% if type == 'success' %}bg-green-50 text-green-800 border-green-200{% else %}bg-red-50 text-red-800 border-red-200{% endif %}">
@@ -183,6 +183,42 @@
     {# Scripts #}
     {% block javascripts %}
         {% block importmap %}{{ importmap('app') }}{% endblock %}
+
+        {# Language dropdown JS #}
+        <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const langButton = document.getElementById('lang-button');
+            const langMenu = document.getElementById('lang-menu');
+
+            langButton.addEventListener('click', (e) => {
+                e.stopPropagation();
+                langMenu.classList.toggle('hidden');
+            });
+
+            document.addEventListener('click', () => {
+                langMenu.classList.add('hidden');
+            });
+
+            const currentRoute = "{{ app.request.attributes.get('_route')|e('js') }}";
+            const routeParams = {{ app.request.attributes.get('_route_params')|json_encode|raw }};
+
+            langMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const lang = link.dataset.lang;
+                    langButton.textContent = `${lang.toUpperCase()} ▼`;
+                    langMenu.classList.add('hidden');
+
+                    const params = {...routeParams, _locale: lang};
+                    const queryString = Object.keys(params)
+                                              .map(k => `${k}=${encodeURIComponent(params[k])}`)
+                                              .join('&');
+                    // Redirect
+                    window.location.href = `/${lang}?${queryString}`;
+                });
+            });
+        });
+        </script>
     {% endblock %}
 
 </body>

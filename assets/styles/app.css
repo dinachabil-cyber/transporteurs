@@ -493,3 +493,50 @@ main {
 [data-theme="dark"] .bg-gradient-to-r {
     background: linear-gradient(to right, var(--bg-gradient-from), var(--bg-gradient-to)) !important;
 }
+.lang-btn {
+    padding: 0.5rem 1rem;
+    background-color: #1f2937;
+    color: #f9fafb;
+    border: none;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.lang-btn:hover {
+    background-color: #374151;
+    transform: translateY(-1px);
+}
+
+.lang-menu {
+    position: absolute;
+    top: calc(100% + 0.5rem);
+    right: 0;
+    background-color: #111827;
+    border-radius: 0.5rem;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: opacity 0.3s, transform 0.3s;
+    z-index: 1000;
+}
+
+.lang-menu a {
+    display: block;
+    padding: 0.5rem 1rem;
+    color: #f9fafb;
+    text-decoration: none;
+    transition: background 0.2s;
+}
+
+.lang-menu a:hover {
+    background-color: #374151;
+}
+
+.lang-menu.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
